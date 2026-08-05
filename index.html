@@ -15,7 +15,7 @@
         margin: 0 auto;
         max-width: 1100px;
         padding: 36px 20px 56px;
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-family: "Avenir Next", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
         background: #fff;
         color: var(--text);
         line-height: 1.65;
@@ -24,10 +24,13 @@
         margin: 0 0 4px;
         font-size: 2.1rem;
         line-height: 1.2;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+        letter-spacing: 0.1px;
       }
       h2 {
         margin: 32px 0 8px;
         font-size: 1.15rem;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
       }
       p { margin: 8px 0; }
       .layout {
@@ -47,6 +50,12 @@
         padding: 12px;
         background: #fff;
         margin-bottom: 12px;
+      }
+      .about {
+        margin-top: 8px;
+      }
+      .about p {
+        margin: 10px 0;
       }
       .tagline {
         margin: 0 0 14px;
@@ -84,22 +93,46 @@
       }
       .assoc-grid {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
       }
       .assoc-item {
         border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 8px 10px;
+        border-radius: 12px;
+        padding: 10px 8px;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 10px;
-        font-size: 0.94rem;
+        justify-content: center;
+        text-align: center;
+        gap: 8px;
+        font-size: 0.88rem;
+        line-height: 1.3;
       }
       .assoc-logo {
-        width: 28px;
-        height: 28px;
+        width: 54px;
+        height: 54px;
         object-fit: contain;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 8px;
+      }
+      .chip-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 12px;
+        font-size: 0.9rem;
+        background: #fafafa;
+        color: #1f2937;
       }
       .edu-grid {
         display: grid; grid-template-columns: 1fr;
@@ -146,6 +179,11 @@
           grid-template-columns: 1fr;
         }
       }
+      @media (min-width: 980px) {
+        .assoc-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
     </style>
   </head>
   <body>
@@ -153,11 +191,17 @@
       <main class="main">
         <h1>Mohd Azfar</h1>
         <p class="tagline">Research Engineer | Multimodal Foundation Models | LLM/VLM Post-Training | Trustworthy AI</p>
-        <p>
-          Research Engineer working on multimodal foundation models, LLM/VLM post-training,
-          representation learning, and trustworthy AI. My current research focuses on preference
-          optimization, multimodal reasoning, and hallucination mitigation.
-        </p>
+        <div class="about">
+          <p>
+            I work on making large multimodal models more reliable in real systems. My focus is
+            on post-training and alignment for LLMs/VLMs, preference optimization, and reducing
+            hallucinations with stronger grounding and evaluation.
+          </p>
+          <p>
+            I enjoy building research that can move from paper ideas to deployable systems:
+            better reward design, safer inference-time behavior, and practical agent routing.
+          </p>
+        </div>
 
         <div class="links">
           <a class="button" href="https://github.com/AZFAR176">GitHub</a>
@@ -267,12 +311,23 @@
 
         <section class="panel">
           <h2>Areas</h2>
-          <ul class="compact-list">
-            <li>LLM Post-Training: SFT, instruction tuning, LoRA/QLoRA, GRPO-style preference optimization, reward design, TRL</li>
-            <li>Multimodal and Agents: VLMs, agentic AI, multi-agent systems, LangGraph, Graph RAG, multimodal RAG</li>
-            <li>Inference and Evaluation: vLLM, faithfulness and hallucination evaluation, knowledge graphs, vector databases</li>
-            <li>Infrastructure: PyTorch, CUDA, Transformers, Python, Linux, DDP/FSDP</li>
-          </ul>
+          <div class="chip-cloud">
+            <span class="chip">SFT</span>
+            <span class="chip">LoRA/QLoRA</span>
+            <span class="chip">GRPO-style Preference Optimization</span>
+            <span class="chip">Reward Design</span>
+            <span class="chip">TRL</span>
+            <span class="chip">VLMs</span>
+            <span class="chip">Agentic AI</span>
+            <span class="chip">LangGraph</span>
+            <span class="chip">Graph RAG</span>
+            <span class="chip">Multimodal RAG</span>
+            <span class="chip">vLLM</span>
+            <span class="chip">Hallucination Evaluation</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">CUDA</span>
+            <span class="chip">DDP/FSDP</span>
+          </div>
         </section>
       </aside>
     </div>
