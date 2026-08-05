@@ -97,6 +97,20 @@
         color: var(--muted);
         font-size: 0.95rem;
       }
+      .org-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .org-logo {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        border-radius: 8px;
+        background: #fff;
+        border: 1px solid var(--border);
+        padding: 4px;
+      }
       .edu-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -208,17 +222,40 @@
 
         <h2>Experience</h2>
         <div class="entry">
-          <div class="entry-title">Impact Analytics - Lead AI Engineer (Retail AI R&D)</div>
+          <div class="org-head">
+            <img class="org-logo" src="https://logo.clearbit.com/impactanalytics.ai" alt="Impact Analytics logo" />
+            <div class="entry-title">Impact Analytics - Lead AI Engineer (Retail AI R&D)</div>
+          </div>
           <div class="entry-meta">
             Enterprise Text-to-SQL LLM post-training, evaluation pipelines, contextual bandit routing, and vLLM inference systems.
           </div>
         </div>
         <div class="entry">
-          <div class="entry-title">Tanuh.ai - Senior Researcher (Medical AI)</div>
+          <div class="org-head">
+            <img class="org-logo" src="https://logo.clearbit.com/tanuh.ai" alt="Tanuh.ai logo" />
+            <div class="entry-title">Tanuh.ai - Senior Researcher (Medical AI)</div>
+          </div>
           <div class="entry-meta">
             Multimodal EEG-report foundation models, preference-guided alignment, and large-scale training/evaluation workflows.
           </div>
         </div>
+        <div class="entry">
+          <div class="org-head">
+            <img class="org-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Chennai_Metro_logo.svg/240px-Chennai_Metro_logo.svg.png" alt="CMRL logo" />
+            <div class="entry-title">Chennai Metro Rail Limited - Assistant Manager (Electrical and IT)</div>
+          </div>
+          <div class="entry-meta">
+            Applied NLP and computer vision systems for operational automation, safety monitoring, and edge deployment.
+          </div>
+        </div>
+
+        <h2>Current Capability Areas</h2>
+        <ul>
+          <li>LLM Post-Training: SFT, instruction tuning, LoRA/QLoRA, GRPO-style preference optimization, reward design, TRL</li>
+          <li>Multimodal and Agents: VLMs, agentic AI, multi-agent systems, LangGraph, Graph RAG, multimodal RAG</li>
+          <li>Inference and Evaluation: vLLM, faithfulness and hallucination evaluation, knowledge graphs, vector databases</li>
+          <li>Infrastructure: PyTorch, CUDA, Transformers, Python, Linux, DDP/FSDP</li>
+        </ul>
 
         <h2>Education</h2>
         <div class="edu-grid">
