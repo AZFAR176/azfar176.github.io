@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Mohd Azfar | Research Engineer</title>
+    <title>Mohd Azfar | Research</title>
     <style>
       :root {
         --bg: #f8fafc;
@@ -23,7 +23,7 @@
         line-height: 1.65;
       }
       .wrap {
-        max-width: 900px;
+        max-width: 980px;
         margin: 40px auto 60px;
         padding: 0 20px;
       }
@@ -39,16 +39,12 @@
         font-size: 2rem;
         line-height: 1.2;
       }
-      h2.section-title {
+      h2 {
         margin-top: 30px;
         margin-bottom: 10px;
         font-size: 1.2rem;
         border-left: 4px solid var(--accent);
         padding-left: 10px;
-      }
-      h2 {
-        margin: 26px 0 10px;
-        font-size: 1.2rem;
       }
       p { margin: 10px 0; }
       .tagline {
@@ -84,27 +80,47 @@
         border-radius: 12px;
         padding: 14px 16px;
       }
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
-      .role {
+      .entry {
         margin-top: 12px;
         padding-top: 12px;
         border-top: 1px dashed var(--border);
       }
-      .role:first-of-type {
+      .entry:first-of-type {
         border-top: none;
         padding-top: 0;
         margin-top: 0;
       }
-      .role-title {
+      .entry-title {
         font-weight: 700;
       }
-      .role-meta {
+      .entry-meta {
         color: var(--muted);
         font-size: 0.95rem;
+      }
+      .edu-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .edu-card {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px;
+        background: #fff;
+      }
+      .edu-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        border-radius: 8px;
+        background: #fff;
+        border: 1px solid var(--border);
+        padding: 4px;
       }
       ul {
         margin: 8px 0 0;
@@ -118,9 +134,9 @@
         color: var(--muted);
         font-size: 0.95rem;
       }
-      @media (min-width: 920px) {
-        .grid {
-          grid-template-columns: 1.1fr 0.9fr;
+      @media (min-width: 860px) {
+        .edu-grid {
+          grid-template-columns: 1fr 1fr;
         }
       }
     </style>
@@ -151,21 +167,12 @@
           vLLM-based inference systems.
         </div>
 
-        <h2 class="section-title">Research Interests</h2>
-        <ul>
-          <li>Multimodal foundation models and representation learning</li>
-          <li>Post-training and alignment for LLM/VLM systems</li>
-          <li>Inference-time reasoning and hallucination mitigation</li>
-          <li>Trustworthy vision-language model behavior and grounding</li>
-          <li>Latency-cost-quality trade-offs in AI production systems</li>
-        </ul>
-
-        <h2 class="section-title">Publications</h2>
+        <h2>Publications</h2>
         <ul>
           <li>
             M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for
             Generalizable EEG Analysis via Preference-Guided Alignment," MICCAI 2026.
-            <strong>[Accepted]</strong>
+            <strong>[Accepted]</strong> <a href="#">[paper link]</a>
           </li>
           <li>
             M. Azfar, S. Bharadwaj, A. Vashist, R. K. Salla, D. Verma, and R. M. Amancherla,
@@ -182,146 +189,61 @@
           </li>
         </ul>
 
-        <h2 class="section-title">Research on Hallucinations and Alignment (Under Review)</h2>
+        <h2>Research on Hallucinations and Alignment (Under Review)</h2>
         <ul>
           <li>
             M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement
             via Hierarchical Residual Subspace Interference in Vision-Language Models,"
-            under review, EMNLP 2026.
+            under review, EMNLP 2026. <a href="#">[preprint]</a>
           </li>
           <li>
             M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer
-            Vision-Language Models," under review, EMNLP 2026.
+            Vision-Language Models," under review, EMNLP 2026. <a href="#">[preprint]</a>
           </li>
           <li>
             M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under
-            Prior-Dominant Collapse," under review, EMNLP 2026.
+            Prior-Dominant Collapse," under review, EMNLP 2026. <a href="#">[preprint]</a>
           </li>
         </ul>
 
-        <h2 class="section-title">Working Papers</h2>
-        <ul>
-          <li>
-            M. Azfar, "Hallucination as Estimator Misspecification under Latent Ambiguity in
-            Vision-Language Models." <a href="#">[link]</a>
-          </li>
-          <li>
-            M. Azfar, "Hallucinations Live in a Low-Rank, Transferable Subspace:
-            Characterization and Mitigation via Anti-Expert Orthogonalization." <a href="#">[link]</a>
-          </li>
-        </ul>
-
-        <div class="grid">
-          <div>
-            <h2 class="section-title">Experience</h2>
-
-            <div class="role">
-              <div class="role-title">Lead AI Engineer - Retail AI R&D</div>
-              <div class="role-meta">Impact Analytics | Jun 2025 - Present | Bengaluru, India</div>
-              <ul>
-                <li>Post-trained enterprise Text-to-SQL LLMs with SFT and preference optimization, improving SQL execution accuracy by 15% and reducing invalid SQL by 20%.</li>
-                <li>Built alignment and hallucination evaluation pipelines with execution-based verification and self-correction loops.</li>
-                <li>Developed contextual multi-armed bandit routing for agent/tool selection using online reward feedback.</li>
-                <li>Scaled inference and tool-augmented reasoning with vLLM for large-volume serving.</li>
-              </ul>
-            </div>
-
-            <div class="role">
-              <div class="role-title">Senior Researcher - Medical AI</div>
-              <div class="role-meta">Tanuh.ai | Jul 2023 - Apr 2025</div>
-              <ul>
-                <li>Developed multimodal EEG-report foundation modeling pipelines for robust neurological analysis.</li>
-                <li>Designed GTRE with preference-guided alignment for improved cross-dataset generalization.</li>
-                <li>Scaled training on multi-GPU infrastructure using distributed mixed-precision workflows.</li>
-                <li>Reduced evaluation turnaround from 3 days to 8 hours while increasing throughput.</li>
-              </ul>
-            </div>
-
-            <div class="role">
-              <div class="role-title">Assistant Manager - Electrical and IT</div>
-              <div class="role-meta">Chennai Metro Rail Limited | Aug 2018 - Jul 2022</div>
-              <ul>
-                <li>Built BERT-based NLP pipelines for automated document understanding and summarization.</li>
-                <li>Delivered vision models for infrastructure monitoring and safety-critical detection.</li>
-                <li>Optimized edge object detection on NVIDIA Jetson with TensorRT for sub-50 ms inference.</li>
-              </ul>
-            </div>
+        <h2>Experience</h2>
+        <div class="entry">
+          <div class="entry-title">Impact Analytics - Lead AI Engineer (Retail AI R&D)</div>
+          <div class="entry-meta">
+            Enterprise Text-to-SQL LLM post-training, evaluation pipelines, contextual bandit routing, and vLLM inference systems.
           </div>
-
-          <div>
-            <h2 class="section-title">Education</h2>
-            <ul>
-              <li>
-                <strong>Indian Institute of Science, Bengaluru</strong><br />
-                M.Tech, Machine Learning and Signal Processing (2022-2024), GPA: 8.65/10
-              </li>
-              <li>
-                <strong>Aligarh Muslim University, India</strong><br />
-                B.Tech, Electrical and Electronics Engineering (2013-2017), GPA: 9.28/10
-              </li>
-            </ul>
-            <p class="muted">
-              Key courses: Advanced Deep Representation Learning, Optimization for AI/ML,
-              Random Processes, Pattern Recognition, Reinforcement Learning, Linear Algebra,
-              Data Structures and Algorithms.
-            </p>
-            <p class="muted">
-              Teaching: TA, Data Analytics and Random Processes (IISc, 2022-23).
-            </p>
-
-            <h2 class="section-title">Technical Competencies</h2>
-            <ul>
-              <li><strong>LLM Post-Training:</strong> SFT, instruction tuning, LoRA/QLoRA, GRPO-style preference optimization, reward design, TRL</li>
-              <li><strong>Multimodal and Agents:</strong> VLMs, agentic AI, multi-agent systems, LangGraph, Graph RAG, multimodal RAG</li>
-              <li><strong>Inference and Eval:</strong> vLLM, faithfulness and hallucination evaluation, knowledge graphs, vector databases</li>
-              <li><strong>Infra:</strong> PyTorch, CUDA, Transformers, Python, Linux, DDP/FSDP</li>
-            </ul>
-
-            <h2 class="section-title">Open Source</h2>
-            <ul>
-              <li>
-                <a href="https://github.com/AZFAR176/llm-evaluation-toolkit">LLM Evaluation Toolkit</a> - hallucination and faithfulness evaluation framework.
-              </li>
-              <li>
-                <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">Text-to-SQL RL Pipeline</a> - post-training framework with reward-driven SQL generation.
-              </li>
-              <li>
-                <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">Contextual Bandits For Multi-Agent Systems</a> - adaptive routing for agentic systems.
-              </li>
-            </ul>
+        </div>
+        <div class="entry">
+          <div class="entry-title">Tanuh.ai - Senior Researcher (Medical AI)</div>
+          <div class="entry-meta">
+            Multimodal EEG-report foundation models, preference-guided alignment, and large-scale training/evaluation workflows.
           </div>
         </div>
 
-        <h2 class="section-title">Selected Projects</h2>
-        <ul>
-          <li>
-            <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">
-              Contextual Bandits For Multi-Agent Systems
-            </a>
-            <span class="muted"> - contextual MAB routing for dynamic agent/tool selection with online feedback.</span>
-          </li>
-          <li>
-            <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">
-              Text-to-SQL RL Pipeline
-            </a>
-            <span class="muted"> - SFT/DPO/GRPO/PPO-style post-training pipeline for robust SQL generation.</span>
-          </li>
-          <li>
-            <a href="https://github.com/AZFAR176/llm-evaluation-toolkit">
-              LLM Evaluation Toolkit
-            </a>
-            <span class="muted"> - benchmark adapters, faithfulness metrics, and automated reports.</span>
-          </li>
-        </ul>
-
-        <h2 class="section-title">Opportunities</h2>
-        <p>
-          I am interested in PhD opportunities and research engineering roles in multimodal
-          foundation models, LLM/VLM alignment, inference-time reasoning, and trustworthy AI.
-        </p>
+        <h2>Education</h2>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-head">
+              <img class="logo" src="https://www.iisc.ac.in/wp-content/uploads/2019/06/IISc_Master_Seal_Black_Transparent.png" alt="IISc logo" />
+              <div>
+                <strong>Indian Institute of Science, Bengaluru</strong><br />
+                M.Tech, Machine Learning and Signal Processing
+              </div>
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-head">
+              <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/9c/ALMU-logo.jpg" alt="AMU logo" />
+              <div>
+                <strong>Aligarh Muslim University, India</strong><br />
+                B.Tech, Electrical and Electronics Engineering
+              </div>
+            </div>
+          </div>
+        </div>
 
         <footer>
-          Last updated: August 2026. Replace placeholder publication/CV links with final URLs.
+          Last updated: August 2026. Replace publication/CV placeholder links with final URLs.
         </footer>
       </section>
     </main>
