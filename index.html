@@ -3,18 +3,144 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Mohd Azfar</title>
+    <title>Mohd Azfar | LLM Systems, RL, Agentic AI</title>
     <style>
-      body { font-family: Arial, sans-serif; max-width: 780px; margin: 48px auto; padding: 0 16px; line-height: 1.6; }
-      h1 { margin-bottom: 8px; }
-      .muted { color: #666; }
-      a { text-decoration: none; }
+      :root {
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --link: #1d4ed8;
+        --border: #e2e8f0;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+      }
+      .wrap {
+        max-width: 900px;
+        margin: 40px auto 60px;
+        padding: 0 20px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+      h2 {
+        margin: 26px 0 10px;
+        font-size: 1.2rem;
+      }
+      p { margin: 10px 0; }
+      .tagline {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .button {
+        display: inline-block;
+        padding: 9px 12px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--text);
+        background: #fff;
+        font-weight: 600;
+      }
+      .button.primary {
+        border-color: #bfdbfe;
+        background: #eff6ff;
+        color: #1e3a8a;
+      }
+      ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+      }
+      li { margin: 8px 0; }
+      a { color: var(--link); }
+      .muted { color: var(--muted); }
+      footer {
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
     </style>
   </head>
   <body>
-    <h1>Mohd Azfar</h1>
-    <p class="muted">LLM Systems - RL - Agentic AI</p>
-    <p>Welcome to my research homepage.</p>
-    <p><a href="https://github.com/AZFAR176">GitHub Profile</a></p>
+    <main class="wrap">
+      <section class="card">
+        <h1>Mohd Azfar</h1>
+        <p class="tagline">LLM Systems, Reinforcement Learning, and Agentic AI</p>
+        <p>
+          I work on practical and research-driven AI systems for reliable reasoning, tool use,
+          and decision-making under constraints. My current focus is post-training pipelines,
+          agent routing, and evaluation frameworks for production-grade LLM behavior.
+        </p>
+
+        <div class="links">
+          <a class="button primary" href="https://github.com/AZFAR176">GitHub</a>
+          <a class="button" href="mailto:azfar45@gmail.com">Email</a>
+          <a class="button" href="#" title="Replace with your CV link">CV (add link)</a>
+          <a class="button" href="#" title="Replace with your Google Scholar link">Scholar (add link)</a>
+        </div>
+
+        <h2>Research Interests</h2>
+        <ul>
+          <li>LLM post-training: SFT, DPO, GRPO/PPO-style alignment and reward design</li>
+          <li>Contextual bandits for dynamic multi-agent routing and tool selection</li>
+          <li>Evaluation of faithfulness, execution quality, and policy-safe generation</li>
+          <li>Latency/cost/quality trade-offs in real-world AI deployments</li>
+        </ul>
+
+        <h2>Selected Projects</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">
+              Contextual Bandits For Multi-Agent Systems
+            </a>
+            <span class="muted"> - adaptive routing with LinUCB and Thompson sampling.</span>
+          </li>
+          <li>
+            <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">
+              Text-to-SQL RL Pipeline
+            </a>
+            <span class="muted"> - SFT/DPO/GRPO/PPO-style training for text-to-SQL models.</span>
+          </li>
+          <li>
+            <a href="https://github.com/AZFAR176/llm-evaluation-toolkit">
+              LLM Evaluation Toolkit
+            </a>
+            <span class="muted"> - benchmark adapters and reporting for LLM system evaluation.</span>
+          </li>
+        </ul>
+
+        <h2>Opportunities</h2>
+        <p>
+          I am interested in PhD opportunities and research engineering roles in LLM systems,
+          reasoning, and reinforcement learning for intelligent agents.
+        </p>
+
+        <footer>
+          Last updated: August 2026
+        </footer>
+      </section>
+    </main>
   </body>
 </html>
