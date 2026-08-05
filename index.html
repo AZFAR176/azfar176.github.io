@@ -55,6 +55,25 @@
         border: 1px solid var(--line);
         border-radius: 8px;
       }
+      .assoc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .assoc-item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 8px 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.94rem;
+      }
+      .assoc-logo {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+      }
       .entry {
         margin-top: 14px; padding-top: 12px;
         border-top: 1px solid var(--line);
@@ -115,6 +134,9 @@
         padding-top: 12px;
       }
       @media (min-width: 860px) {
+        .assoc-grid {
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+        }
         .edu-grid {
           grid-template-columns: 1fr 1fr;
         }
@@ -133,8 +155,6 @@
     <div class="links">
       <a class="button" href="https://github.com/AZFAR176">GitHub</a>
       <a class="button" href="mailto:azfar45@gmail.com">Email</a>
-      <a class="button" href="#" title="Replace with your CV URL">CV</a>
-      <a class="button" href="#" title="Replace with your Google Scholar URL">Scholar</a>
     </div>
 
     <div class="highlight">
@@ -142,32 +162,37 @@
       LLM evaluation, contextual bandits for dynamic agent routing, and scalable vLLM inference.
     </div>
 
+    <h2>Associations</h2>
+    <div class="assoc-grid">
+      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/iisc.png" alt="IISc logo" />IISc</div>
+      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/amu.jpg" alt="AMU logo" />AMU</div>
+      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/impact-analytics.svg" alt="Impact Analytics logo" />Impact Analytics</div>
+      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/tanuh.png" alt="Tanuh logo" />Tanuh.ai</div>
+      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/cmrl.svg" alt="CMRL logo" />CMRL</div>
+    </div>
+
     <h2>Publications</h2>
     <ul>
       <li>
         M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for
         Generalizable EEG Analysis via Preference-Guided Alignment," MICCAI 2026.
-        <strong>[Accepted]</strong> <a href="#">[paper]</a>
+        <strong>[Accepted]</strong> [paper link to be added]
       </li>
       <li>
         M. Azfar, S. Bharadwaj, A. Vashist, R. K. Salla, D. Verma, and R. M. Amancherla,
-        "Multiscale Diagnostics of Visual Language Models," ICCV Workshop 2025. <a href="#">[paper]</a>
+        "Multiscale Diagnostics of Visual Language Models," ICCV Workshop 2025.
+        <a href="https://drive.google.com/file/d/1X8sgpmNBwMt0rCEsAwdg7KiBl6ffQj7f/view?usp=sharing">[paper]</a>
       </li>
       <li>
         M. Azfar*, S. Bharadwaj*, "Balanced CutMix: Enhancing Image Classification Through
-        Curriculum Learning," ACCV 2024 (Poster). <a href="#">[paper]</a>
+        Curriculum Learning," ACCV 2024 (Poster).
+        <a href="https://drive.google.com/file/d/1Qpeqje_t8WXkJj3dCDKKNiiB01daJrHd/view?usp=sharing">[paper]</a>
       </li>
       <li>
         M. Azfar*, S. Bharadwaj*, A. Shasikumar, "Improving Smooth GradCAM++ with Gradient
-        Weighting Techniques," IEEE INDICON 2024 (Spotlight). <a href="#">[paper]</a>
+        Weighting Techniques," IEEE INDICON 2024 (Spotlight).
+        <a href="https://ieeexplore.ieee.org/abstract/document/10958549/">[paper]</a>
       </li>
-    </ul>
-
-    <h2>Research on Hallucinations and Alignment (Under Review)</h2>
-    <ul>
-      <li>M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement via Hierarchical Residual Subspace Interference in Vision-Language Models." <a href="#">[preprint]</a></li>
-      <li>M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer Vision-Language Models." <a href="#">[preprint]</a></li>
-      <li>M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under Prior-Dominant Collapse." <a href="#">[preprint]</a></li>
     </ul>
 
     <h2>Experience</h2>
@@ -224,7 +249,7 @@
     </div>
 
     <footer>
-      Last updated: August 2026. Replace placeholder publication/CV/Scholar links with final URLs.
+      Last updated: August 2026.
     </footer>
   </body>
 </html>
