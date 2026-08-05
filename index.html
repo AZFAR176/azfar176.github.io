@@ -6,84 +6,58 @@
     <title>Mohd Azfar | Research</title>
     <style>
       :root {
-        --bg: #f8fafc;
-        --card: #ffffff;
-        --text: #0f172a;
-        --muted: #475569;
+        --text: #111827;
+        --muted: #4b5563;
         --link: #1d4ed8;
-        --border: #e2e8f0;
-        --accent: #0ea5e9;
+        --line: #e5e7eb;
       }
-      * { box-sizing: border-box; }
       body {
-        margin: 0;
+        margin: 0 auto;
+        max-width: 900px;
+        padding: 36px 20px 56px;
         font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-        background: var(--bg);
+        background: #fff;
         color: var(--text);
         line-height: 1.65;
       }
-      .wrap {
-        max-width: 980px;
-        margin: 40px auto 60px;
-        padding: 0 20px;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 28px;
-        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-      }
       h1 {
-        margin: 0 0 6px;
-        font-size: 2rem;
+        margin: 0 0 4px;
+        font-size: 2.1rem;
         line-height: 1.2;
       }
       h2 {
-        margin-top: 30px;
-        margin-bottom: 10px;
-        font-size: 1.2rem;
-        border-left: 4px solid var(--accent);
-        padding-left: 10px;
+        margin: 32px 0 8px;
+        font-size: 1.15rem;
       }
-      p { margin: 10px 0; }
+      p { margin: 8px 0; }
       .tagline {
-        margin: 0 0 16px;
+        margin: 0 0 14px;
         color: var(--muted);
-        font-weight: 600;
+        font-weight: 500;
       }
       .links {
-        display: flex;
-        flex-wrap: wrap;
+        display: flex; flex-wrap: wrap;
         gap: 10px;
-        margin-top: 14px;
+        margin-top: 12px;
       }
       .button {
-        display: inline-block;
-        padding: 9px 12px;
-        border: 1px solid var(--border);
-        border-radius: 10px;
+        display: inline-block; padding: 6px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
         text-decoration: none;
         color: var(--text);
-        background: #fff;
-        font-weight: 600;
-      }
-      .button.primary {
-        border-color: #bfdbfe;
-        background: #eff6ff;
-        color: #1e3a8a;
+        background: #fafafa;
+        font-size: 0.94rem;
       }
       .highlight {
-        margin-top: 16px;
-        background: #f0f9ff;
-        border: 1px solid #bae6fd;
-        border-radius: 12px;
-        padding: 14px 16px;
+        margin-top: 16px; padding: 10px 12px;
+        background: #f9fafb;
+        border: 1px solid var(--line);
+        border-radius: 8px;
       }
       .entry {
-        margin-top: 12px;
-        padding-top: 12px;
-        border-top: 1px dashed var(--border);
+        margin-top: 14px; padding-top: 12px;
+        border-top: 1px solid var(--line);
       }
       .entry:first-of-type {
         border-top: none;
@@ -95,58 +69,50 @@
       }
       .entry-meta {
         color: var(--muted);
-        font-size: 0.95rem;
+        font-size: 0.97rem;
       }
       .org-head {
-        display: flex;
-        align-items: center;
-        gap: 12px;
+        display: flex; align-items: center; gap: 10px;
       }
       .org-logo {
-        width: 44px;
-        height: 44px;
+        width: 34px; height: 34px;
         object-fit: contain;
-        border-radius: 8px;
+        border-radius: 6px;
         background: #fff;
-        border: 1px solid var(--border);
-        padding: 4px;
+        border: 1px solid var(--line);
+        padding: 3px;
       }
       .edu-grid {
-        display: grid;
-        grid-template-columns: 1fr;
+        display: grid; grid-template-columns: 1fr;
         gap: 12px;
       }
       .edu-card {
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px;
         background: #fff;
       }
       .edu-head {
-        display: flex;
-        align-items: center;
-        gap: 12px;
+        display: flex; align-items: center; gap: 10px;
       }
       .logo {
-        width: 44px;
-        height: 44px;
+        width: 34px; height: 34px;
         object-fit: contain;
-        border-radius: 8px;
+        border-radius: 6px;
         background: #fff;
-        border: 1px solid var(--border);
-        padding: 4px;
+        border: 1px solid var(--line);
+        padding: 3px;
       }
-      ul {
-        margin: 8px 0 0;
-        padding-left: 18px;
-      }
+      ul { margin: 8px 0 0; padding-left: 18px; }
       li { margin: 8px 0; }
       a { color: var(--link); }
       .muted { color: var(--muted); }
       footer {
-        margin-top: 20px;
+        margin-top: 26px;
         color: var(--muted);
-        font-size: 0.95rem;
+        font-size: 0.92rem;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
       }
       @media (min-width: 860px) {
         .edu-grid {
@@ -156,133 +122,109 @@
     </style>
   </head>
   <body>
-    <main class="wrap">
-      <section class="card">
-        <h1>Mohd Azfar</h1>
-        <p class="tagline">Research Engineer | Multimodal Foundation Models | LLM/VLM Post-Training | Trustworthy AI</p>
-        <p>
-          Research Engineer working on multimodal foundation models, LLM/VLM post-training,
-          representation learning, and trustworthy AI. My research focuses on preference
-          optimization, multimodal reasoning, and hallucination mitigation, with publications
-          at MICCAI, ICCV Workshop, and ACCV.
-        </p>
+    <h1>Mohd Azfar</h1>
+    <p class="tagline">Research Engineer | Multimodal Foundation Models | LLM/VLM Post-Training | Trustworthy AI</p>
+    <p>
+      Research Engineer working on multimodal foundation models, LLM/VLM post-training,
+      representation learning, and trustworthy AI. My current research focuses on preference
+      optimization, multimodal reasoning, and hallucination mitigation.
+    </p>
 
-        <div class="links">
-          <a class="button primary" href="https://github.com/AZFAR176">GitHub</a>
-          <a class="button" href="mailto:azfar45@gmail.com">Email</a>
-          <a class="button" href="#" title="Replace with your CV URL">CV (add link)</a>
-          <a class="button" href="#" title="Replace with your Google Scholar URL">Scholar (add link)</a>
-        </div>
+    <div class="links">
+      <a class="button" href="https://github.com/AZFAR176">GitHub</a>
+      <a class="button" href="mailto:azfar45@gmail.com">Email</a>
+      <a class="button" href="#" title="Replace with your CV URL">CV</a>
+      <a class="button" href="#" title="Replace with your Google Scholar URL">Scholar</a>
+    </div>
 
-        <div class="highlight">
-          <strong>Current work emphasis:</strong>
-          Enterprise LLM post-training (SFT, preference optimization, GRPO-style RL), robust
-          LLM evaluation, dynamic multi-agent routing via contextual bandits, and scalable
-          vLLM-based inference systems.
-        </div>
+    <div class="highlight">
+      <strong>Current work emphasis:</strong> Enterprise LLM post-training (SFT, preference optimization, GRPO-style RL), robust
+      LLM evaluation, contextual bandits for dynamic agent routing, and scalable vLLM inference.
+    </div>
 
-        <h2>Publications</h2>
-        <ul>
-          <li>
-            M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for
-            Generalizable EEG Analysis via Preference-Guided Alignment," MICCAI 2026.
-            <strong>[Accepted]</strong> <a href="#">[paper link]</a>
-          </li>
-          <li>
-            M. Azfar, S. Bharadwaj, A. Vashist, R. K. Salla, D. Verma, and R. M. Amancherla,
-            "Multiscale Diagnostics of Visual Language Models," ICCV Workshop 2025.
-            <a href="#">[link]</a>
-          </li>
-          <li>
-            M. Azfar*, S. Bharadwaj*, "Balanced CutMix: Enhancing Image Classification Through
-            Curriculum Learning," ACCV 2024 (Poster). <a href="#">[link]</a>
-          </li>
-          <li>
-            M. Azfar*, S. Bharadwaj*, A. Shasikumar, "Improving Smooth GradCAM++ with Gradient
-            Weighting Techniques," IEEE INDICON 2024 (Spotlight). <a href="#">[link]</a>
-          </li>
-        </ul>
+    <h2>Publications</h2>
+    <ul>
+      <li>
+        M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for
+        Generalizable EEG Analysis via Preference-Guided Alignment," MICCAI 2026.
+        <strong>[Accepted]</strong> <a href="#">[paper]</a>
+      </li>
+      <li>
+        M. Azfar, S. Bharadwaj, A. Vashist, R. K. Salla, D. Verma, and R. M. Amancherla,
+        "Multiscale Diagnostics of Visual Language Models," ICCV Workshop 2025. <a href="#">[paper]</a>
+      </li>
+      <li>
+        M. Azfar*, S. Bharadwaj*, "Balanced CutMix: Enhancing Image Classification Through
+        Curriculum Learning," ACCV 2024 (Poster). <a href="#">[paper]</a>
+      </li>
+      <li>
+        M. Azfar*, S. Bharadwaj*, A. Shasikumar, "Improving Smooth GradCAM++ with Gradient
+        Weighting Techniques," IEEE INDICON 2024 (Spotlight). <a href="#">[paper]</a>
+      </li>
+    </ul>
 
-        <h2>Research on Hallucinations and Alignment (Under Review)</h2>
-        <ul>
-          <li>
-            M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement
-            via Hierarchical Residual Subspace Interference in Vision-Language Models,"
-            under review, EMNLP 2026. <a href="#">[preprint]</a>
-          </li>
-          <li>
-            M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer
-            Vision-Language Models," under review, EMNLP 2026. <a href="#">[preprint]</a>
-          </li>
-          <li>
-            M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under
-            Prior-Dominant Collapse," under review, EMNLP 2026. <a href="#">[preprint]</a>
-          </li>
-        </ul>
+    <h2>Research on Hallucinations and Alignment (Under Review)</h2>
+    <ul>
+      <li>M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement via Hierarchical Residual Subspace Interference in Vision-Language Models." <a href="#">[preprint]</a></li>
+      <li>M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer Vision-Language Models." <a href="#">[preprint]</a></li>
+      <li>M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under Prior-Dominant Collapse." <a href="#">[preprint]</a></li>
+    </ul>
 
-        <h2>Experience</h2>
-        <div class="entry">
-          <div class="org-head">
-            <img class="org-logo" src="https://logo.clearbit.com/impactanalytics.ai" alt="Impact Analytics logo" />
-            <div class="entry-title">Impact Analytics - Lead AI Engineer (Retail AI R&D)</div>
-          </div>
-          <div class="entry-meta">
-            Enterprise Text-to-SQL LLM post-training, evaluation pipelines, contextual bandit routing, and vLLM inference systems.
-          </div>
-        </div>
-        <div class="entry">
-          <div class="org-head">
-            <img class="org-logo" src="https://logo.clearbit.com/tanuh.ai" alt="Tanuh.ai logo" />
-            <div class="entry-title">Tanuh.ai - Senior Researcher (Medical AI)</div>
-          </div>
-          <div class="entry-meta">
-            Multimodal EEG-report foundation models, preference-guided alignment, and large-scale training/evaluation workflows.
-          </div>
-        </div>
-        <div class="entry">
-          <div class="org-head">
-            <img class="org-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Chennai_Metro_logo.svg/240px-Chennai_Metro_logo.svg.png" alt="CMRL logo" />
-            <div class="entry-title">Chennai Metro Rail Limited - Assistant Manager (Electrical and IT)</div>
-          </div>
-          <div class="entry-meta">
-            Applied NLP and computer vision systems for operational automation, safety monitoring, and edge deployment.
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="org-head">
+        <img class="org-logo" src="assets/logos/impact-analytics.svg" alt="Impact Analytics logo" />
+        <div class="entry-title">Impact Analytics - Lead AI Engineer (Retail AI R&D)</div>
+      </div>
+      <div class="entry-meta">Enterprise Text-to-SQL LLM post-training, alignment/evaluation pipelines, contextual bandit routing, and vLLM inference systems.</div>
+    </div>
+    <div class="entry">
+      <div class="org-head">
+        <img class="org-logo" src="assets/logos/tanuh.png" alt="Tanuh.ai logo" />
+        <div class="entry-title">Tanuh.ai - Senior Researcher (Medical AI)</div>
+      </div>
+      <div class="entry-meta">Multimodal EEG-report foundation models, preference-guided alignment, and large-scale training/evaluation workflows.</div>
+    </div>
+    <div class="entry">
+      <div class="org-head">
+        <img class="org-logo" src="assets/logos/cmrl.png" alt="CMRL logo" />
+        <div class="entry-title">Chennai Metro Rail Limited - Assistant Manager (Electrical and IT)</div>
+      </div>
+      <div class="entry-meta">Applied NLP and computer vision systems for operational automation, safety monitoring, and edge deployment.</div>
+    </div>
+
+    <h2>Areas</h2>
+    <ul>
+      <li>LLM Post-Training: SFT, instruction tuning, LoRA/QLoRA, GRPO-style preference optimization, reward design, TRL</li>
+      <li>Multimodal and Agents: VLMs, agentic AI, multi-agent systems, LangGraph, Graph RAG, multimodal RAG</li>
+      <li>Inference and Evaluation: vLLM, faithfulness and hallucination evaluation, knowledge graphs, vector databases</li>
+      <li>Infrastructure: PyTorch, CUDA, Transformers, Python, Linux, DDP/FSDP</li>
+    </ul>
+
+    <h2>Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-head">
+          <img class="logo" src="assets/logos/iisc.png" alt="IISc logo" />
+          <div>
+            <strong>Indian Institute of Science, Bengaluru</strong><br />
+            M.Tech, Machine Learning and Signal Processing
           </div>
         </div>
-
-        <h2>Current Capability Areas</h2>
-        <ul>
-          <li>LLM Post-Training: SFT, instruction tuning, LoRA/QLoRA, GRPO-style preference optimization, reward design, TRL</li>
-          <li>Multimodal and Agents: VLMs, agentic AI, multi-agent systems, LangGraph, Graph RAG, multimodal RAG</li>
-          <li>Inference and Evaluation: vLLM, faithfulness and hallucination evaluation, knowledge graphs, vector databases</li>
-          <li>Infrastructure: PyTorch, CUDA, Transformers, Python, Linux, DDP/FSDP</li>
-        </ul>
-
-        <h2>Education</h2>
-        <div class="edu-grid">
-          <div class="edu-card">
-            <div class="edu-head">
-              <img class="logo" src="https://www.iisc.ac.in/wp-content/uploads/2019/06/IISc_Master_Seal_Black_Transparent.png" alt="IISc logo" />
-              <div>
-                <strong>Indian Institute of Science, Bengaluru</strong><br />
-                M.Tech, Machine Learning and Signal Processing
-              </div>
-            </div>
-          </div>
-          <div class="edu-card">
-            <div class="edu-head">
-              <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/9c/ALMU-logo.jpg" alt="AMU logo" />
-              <div>
-                <strong>Aligarh Muslim University, India</strong><br />
-                B.Tech, Electrical and Electronics Engineering
-              </div>
-            </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-head">
+          <img class="logo" src="assets/logos/amu.jpg" alt="AMU logo" />
+          <div>
+            <strong>Aligarh Muslim University, India</strong><br />
+            B.Tech, Electrical and Electronics Engineering
           </div>
         </div>
+      </div>
+    </div>
 
-        <footer>
-          Last updated: August 2026. Replace publication/CV placeholder links with final URLs.
-        </footer>
-      </section>
-    </main>
+    <footer>
+      Last updated: August 2026. Replace placeholder publication/CV/Scholar links with final URLs.
+    </footer>
   </body>
 </html>
