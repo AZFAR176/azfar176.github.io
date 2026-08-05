@@ -13,7 +13,7 @@
       }
       body {
         margin: 0 auto;
-        max-width: 900px;
+        max-width: 1100px;
         padding: 36px 20px 56px;
         font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
         background: #fff;
@@ -30,6 +30,24 @@
         font-size: 1.15rem;
       }
       p { margin: 8px 0; }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+      }
+      .main {
+        min-width: 0;
+      }
+      .side {
+        min-width: 0;
+      }
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fff;
+        margin-bottom: 12px;
+      }
       .tagline {
         margin: 0 0 14px;
         color: var(--muted);
@@ -55,9 +73,18 @@
         border: 1px solid var(--line);
         border-radius: 8px;
       }
+      .compact-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .compact-list li {
+        margin: 8px 0;
+        padding-left: 0;
+      }
       .assoc-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
         gap: 10px;
       }
       .assoc-item {
@@ -107,136 +134,147 @@
         padding-top: 12px;
       }
       @media (min-width: 860px) {
-        .assoc-grid {
-          grid-template-columns: repeat(5, minmax(0, 1fr));
+        .layout {
+          grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+          align-items: start;
+        }
+        .side {
+          position: sticky;
+          top: 18px;
         }
         .edu-grid {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
   <body>
-    <h1>Mohd Azfar</h1>
-    <p class="tagline">Research Engineer | Multimodal Foundation Models | LLM/VLM Post-Training | Trustworthy AI</p>
-    <p>
-      Research Engineer working on multimodal foundation models, LLM/VLM post-training,
-      representation learning, and trustworthy AI. My current research focuses on preference
-      optimization, multimodal reasoning, and hallucination mitigation.
-    </p>
+    <div class="layout">
+      <main class="main">
+        <h1>Mohd Azfar</h1>
+        <p class="tagline">Research Engineer | Multimodal Foundation Models | LLM/VLM Post-Training | Trustworthy AI</p>
+        <p>
+          Research Engineer working on multimodal foundation models, LLM/VLM post-training,
+          representation learning, and trustworthy AI. My current research focuses on preference
+          optimization, multimodal reasoning, and hallucination mitigation.
+        </p>
 
-    <div class="links">
-      <a class="button" href="https://github.com/AZFAR176">GitHub</a>
-      <a class="button" href="mailto:azfar45@gmail.com">Email</a>
-    </div>
-
-    <div class="highlight">
-      <strong>Current work emphasis:</strong> Enterprise LLM post-training (SFT, preference optimization, GRPO-style RL), robust
-      LLM evaluation, contextual bandits for dynamic agent routing, and scalable vLLM inference.
-    </div>
-
-    <h2>Associations</h2>
-    <div class="assoc-grid">
-      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/iisc.png" alt="IISc logo" />IISc</div>
-      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/amu.jpg" alt="AMU logo" />AMU</div>
-      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/impact-analytics.svg" alt="Impact Analytics logo" />Impact Analytics</div>
-      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/tanuh.png" alt="Tanuh logo" />Tanuh.ai</div>
-      <div class="assoc-item"><img class="assoc-logo" src="assets/logos/cmrl.svg" alt="CMRL logo" />CMRL</div>
-    </div>
-
-    <h2>Publications</h2>
-    <ul>
-      <li>
-        M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for
-        Generalizable EEG Analysis via Preference-Guided Alignment," MICCAI 2026.
-        <strong>[Accepted]</strong>
-        <a href="https://drive.google.com/file/d/1PhVH8EvVGTHi2NHqk41rSpE3ggIUJ93-/view?usp=drive_link">[paper]</a>
-      </li>
-      <li>
-        M. Azfar, S. Bharadwaj, A. Vashist, R. K. Salla, D. Verma, and R. M. Amancherla,
-        "Multiscale Diagnostics of Visual Language Models," ICCV Workshop 2025.
-        <a href="https://drive.google.com/file/d/1X8sgpmNBwMt0rCEsAwdg7KiBl6ffQj7f/view?usp=sharing">[paper]</a>
-      </li>
-      <li>
-        M. Azfar*, S. Bharadwaj*, "Balanced CutMix: Enhancing Image Classification Through
-        Curriculum Learning," ACCV 2024 (Poster).
-        <a href="https://openreview.net/forum?id=viJW1oihrG">[paper]</a>
-      </li>
-      <li>
-        M. Azfar*, S. Bharadwaj*, A. Shasikumar, "Improving Smooth GradCAM++ with Gradient
-        Weighting Techniques," IEEE INDICON 2024 (Spotlight).
-        <a href="https://ieeexplore.ieee.org/document/10958549">[paper]</a>
-      </li>
-    </ul>
-
-    <h2>Under Review</h2>
-    <ul>
-      <li>
-        M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement via Hierarchical Residual Subspace Interference in Vision-Language Models," under review (EMNLP 2026).
-      </li>
-      <li>
-        M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer Vision-Language Models," under review (EMNLP 2026).
-      </li>
-      <li>
-        M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under Prior-Dominant Collapse," under review (EMNLP 2026).
-      </li>
-    </ul>
-
-    <h2>Working Papers</h2>
-    <ul>
-      <li>
-        M. Azfar, "Hallucination as Estimator Misspecification under Latent Ambiguity in Vision-Language Models."
-        <a href="https://drive.google.com/file/d/17L0_W7UzGkBE7v425X9texov82ZFv49z/view?usp=sharing">[manuscript]</a>
-      </li>
-      <li>
-        M. Azfar, "Hallucinations Live in a Low-Rank, Transferable Subspace: Characterization and Mitigation via Anti-Expert Orthogonalization." [manuscript link to be added]
-      </li>
-    </ul>
-
-    <h2>GitHub Repositories</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">Contextual-Bandits-For-Multi-Agent-Systems</a>:
-        contextual multi-armed bandit framework for dynamic agent routing and tool selection with online feedback.
-      </li>
-      <li>
-        <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">Text-to-SQL-RL-Pipeline</a>:
-        post-training framework with SFT, DPO, GRPO/PPO-style workflows, reward shaping, and execution-aware SQL optimization.
-      </li>
-      <li>
-        <a href="https://github.com/AZFAR176/llm-evaluation-toolkit">llm-evaluation-toolkit</a>:
-        open-source toolkit for faithfulness/hallucination diagnostics, benchmark adapters, and structured evaluation reporting.
-      </li>
-    </ul>
-
-    <h2>Areas</h2>
-    <ul>
-      <li>LLM Post-Training: SFT, instruction tuning, LoRA/QLoRA, GRPO-style preference optimization, reward design, TRL</li>
-      <li>Multimodal and Agents: VLMs, agentic AI, multi-agent systems, LangGraph, Graph RAG, multimodal RAG</li>
-      <li>Inference and Evaluation: vLLM, faithfulness and hallucination evaluation, knowledge graphs, vector databases</li>
-      <li>Infrastructure: PyTorch, CUDA, Transformers, Python, Linux, DDP/FSDP</li>
-    </ul>
-
-    <h2>Education</h2>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div class="edu-head">
-          <img class="logo" src="assets/logos/iisc.png" alt="IISc logo" />
-          <div>
-            <strong>Indian Institute of Science, Bengaluru</strong><br />
-            M.Tech, Machine Learning and Signal Processing
-          </div>
+        <div class="links">
+          <a class="button" href="https://github.com/AZFAR176">GitHub</a>
+          <a class="button" href="mailto:azfar45@gmail.com">Email</a>
         </div>
-      </div>
-      <div class="edu-card">
-        <div class="edu-head">
-          <img class="logo" src="assets/logos/amu.jpg" alt="AMU logo" />
-          <div>
-            <strong>Aligarh Muslim University, India</strong><br />
-            B.Tech, Electrical and Electronics Engineering
-          </div>
+
+        <div class="highlight">
+          <strong>Current work emphasis:</strong> Enterprise LLM post-training (SFT, preference optimization, GRPO-style RL), robust
+          LLM evaluation, contextual bandits for dynamic agent routing, and scalable vLLM inference.
         </div>
-      </div>
+
+        <h2>Publications</h2>
+        <ul>
+          <li>
+            M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for
+            Generalizable EEG Analysis via Preference-Guided Alignment," MICCAI 2026.
+            <strong>[Accepted]</strong>
+            <a href="https://drive.google.com/file/d/1PhVH8EvVGTHi2NHqk41rSpE3ggIUJ93-/view?usp=drive_link">[paper]</a>
+          </li>
+          <li>
+            M. Azfar, S. Bharadwaj, A. Vashist, R. K. Salla, D. Verma, and R. M. Amancherla,
+            "Multiscale Diagnostics of Visual Language Models," ICCV Workshop 2025.
+            <a href="https://drive.google.com/file/d/1X8sgpmNBwMt0rCEsAwdg7KiBl6ffQj7f/view?usp=sharing">[paper]</a>
+          </li>
+          <li>
+            M. Azfar*, S. Bharadwaj*, "Balanced CutMix: Enhancing Image Classification Through
+            Curriculum Learning," ACCV 2024 (Poster).
+            <a href="https://openreview.net/forum?id=viJW1oihrG">[paper]</a>
+          </li>
+          <li>
+            M. Azfar*, S. Bharadwaj*, A. Shasikumar, "Improving Smooth GradCAM++ with Gradient
+            Weighting Techniques," IEEE INDICON 2024 (Spotlight).
+            <a href="https://ieeexplore.ieee.org/document/10958549">[paper]</a>
+          </li>
+        </ul>
+
+        <h2>Under Review</h2>
+        <ul>
+          <li>M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement via Hierarchical Residual Subspace Interference in Vision-Language Models," under review (EMNLP 2026).</li>
+          <li>M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer Vision-Language Models," under review (EMNLP 2026).</li>
+          <li>M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under Prior-Dominant Collapse," under review (EMNLP 2026).</li>
+        </ul>
+
+        <h2>Working Papers</h2>
+        <ul>
+          <li>
+            M. Azfar, "Hallucination as Estimator Misspecification under Latent Ambiguity in Vision-Language Models."
+            <a href="https://drive.google.com/file/d/17L0_W7UzGkBE7v425X9texov82ZFv49z/view?usp=sharing">[manuscript]</a>
+          </li>
+          <li>
+            M. Azfar, "Hallucinations Live in a Low-Rank, Transferable Subspace: Characterization and Mitigation via Anti-Expert Orthogonalization." [manuscript link to be added]
+          </li>
+        </ul>
+
+        <h2>GitHub Repositories</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">Contextual-Bandits-For-Multi-Agent-Systems</a>:
+            contextual multi-armed bandit framework for dynamic agent routing and tool selection with online feedback.
+          </li>
+          <li>
+            <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">Text-to-SQL-RL-Pipeline</a>:
+            post-training framework with SFT, DPO, GRPO/PPO-style workflows, reward shaping, and execution-aware SQL optimization.
+          </li>
+          <li>
+            <a href="https://github.com/AZFAR176/llm-evaluation-toolkit">llm-evaluation-toolkit</a>:
+            open-source toolkit for faithfulness/hallucination diagnostics, benchmark adapters, and structured evaluation reporting.
+          </li>
+        </ul>
+      </main>
+
+      <aside class="side">
+        <section class="panel">
+          <h2>Associations</h2>
+          <div class="assoc-grid">
+            <div class="assoc-item"><img class="assoc-logo" src="assets/logos/iisc.png" alt="IISc logo" />IISc</div>
+            <div class="assoc-item"><img class="assoc-logo" src="assets/logos/amu.jpg" alt="AMU logo" />AMU</div>
+            <div class="assoc-item"><img class="assoc-logo" src="assets/logos/impact-analytics.svg" alt="Impact Analytics logo" />Impact Analytics</div>
+            <div class="assoc-item"><img class="assoc-logo" src="assets/logos/tanuh.png" alt="Tanuh logo" />Tanuh.ai</div>
+            <div class="assoc-item"><img class="assoc-logo" src="assets/logos/cmrl.svg" alt="CMRL logo" />CMRL</div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Education</h2>
+          <div class="edu-grid">
+            <div class="edu-card">
+              <div class="edu-head">
+                <img class="logo" src="assets/logos/iisc.png" alt="IISc logo" />
+                <div>
+                  <strong>Indian Institute of Science, Bengaluru</strong><br />
+                  M.Tech, Machine Learning and Signal Processing
+                </div>
+              </div>
+            </div>
+            <div class="edu-card">
+              <div class="edu-head">
+                <img class="logo" src="assets/logos/amu.jpg" alt="AMU logo" />
+                <div>
+                  <strong>Aligarh Muslim University, India</strong><br />
+                  B.Tech, Electrical and Electronics Engineering
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Areas</h2>
+          <ul class="compact-list">
+            <li>LLM Post-Training: SFT, instruction tuning, LoRA/QLoRA, GRPO-style preference optimization, reward design, TRL</li>
+            <li>Multimodal and Agents: VLMs, agentic AI, multi-agent systems, LangGraph, Graph RAG, multimodal RAG</li>
+            <li>Inference and Evaluation: vLLM, faithfulness and hallucination evaluation, knowledge graphs, vector databases</li>
+            <li>Infrastructure: PyTorch, CUDA, Transformers, Python, Linux, DDP/FSDP</li>
+          </ul>
+        </section>
+      </aside>
     </div>
 
     <footer>
