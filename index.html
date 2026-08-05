@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Mohd Azfar | LLM Systems, RL, Agentic AI</title>
+    <title>Mohd Azfar | Research Engineer</title>
     <style>
       :root {
         --bg: #f8fafc;
@@ -12,6 +12,7 @@
         --muted: #475569;
         --link: #1d4ed8;
         --border: #e2e8f0;
+        --accent: #0ea5e9;
       }
       * { box-sizing: border-box; }
       body {
@@ -37,6 +38,13 @@
         margin: 0 0 6px;
         font-size: 2rem;
         line-height: 1.2;
+      }
+      h2.section-title {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        border-left: 4px solid var(--accent);
+        padding-left: 10px;
       }
       h2 {
         margin: 26px 0 10px;
@@ -69,6 +77,35 @@
         background: #eff6ff;
         color: #1e3a8a;
       }
+      .highlight {
+        margin-top: 16px;
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 12px;
+        padding: 14px 16px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .role {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px dashed var(--border);
+      }
+      .role:first-of-type {
+        border-top: none;
+        padding-top: 0;
+        margin-top: 0;
+      }
+      .role-title {
+        font-weight: 700;
+      }
+      .role-meta {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
       ul {
         margin: 8px 0 0;
         padding-left: 18px;
@@ -81,64 +118,210 @@
         color: var(--muted);
         font-size: 0.95rem;
       }
+      @media (min-width: 920px) {
+        .grid {
+          grid-template-columns: 1.1fr 0.9fr;
+        }
+      }
     </style>
   </head>
   <body>
     <main class="wrap">
       <section class="card">
         <h1>Mohd Azfar</h1>
-        <p class="tagline">LLM Systems, Reinforcement Learning, and Agentic AI</p>
+        <p class="tagline">Research Engineer | Multimodal Foundation Models | LLM/VLM Post-Training | Trustworthy AI</p>
         <p>
-          I work on practical and research-driven AI systems for reliable reasoning, tool use,
-          and decision-making under constraints. My current focus is post-training pipelines,
-          agent routing, and evaluation frameworks for production-grade LLM behavior.
+          Research Engineer working on multimodal foundation models, LLM/VLM post-training,
+          representation learning, and trustworthy AI. My research focuses on preference
+          optimization, multimodal reasoning, and hallucination mitigation, with publications
+          at MICCAI, ICCV Workshop, and ACCV.
         </p>
 
         <div class="links">
           <a class="button primary" href="https://github.com/AZFAR176">GitHub</a>
           <a class="button" href="mailto:azfar45@gmail.com">Email</a>
-          <a class="button" href="#" title="Replace with your CV link">CV (add link)</a>
-          <a class="button" href="#" title="Replace with your Google Scholar link">Scholar (add link)</a>
+          <a class="button" href="#" title="Replace with your CV URL">CV (add link)</a>
+          <a class="button" href="#" title="Replace with your Google Scholar URL">Scholar (add link)</a>
         </div>
 
-        <h2>Research Interests</h2>
+        <div class="highlight">
+          <strong>Current work emphasis:</strong>
+          Enterprise LLM post-training (SFT, preference optimization, GRPO-style RL), robust
+          LLM evaluation, dynamic multi-agent routing via contextual bandits, and scalable
+          vLLM-based inference systems.
+        </div>
+
+        <h2 class="section-title">Research Interests</h2>
         <ul>
-          <li>LLM post-training: SFT, DPO, GRPO/PPO-style alignment and reward design</li>
-          <li>Contextual bandits for dynamic multi-agent routing and tool selection</li>
-          <li>Evaluation of faithfulness, execution quality, and policy-safe generation</li>
-          <li>Latency/cost/quality trade-offs in real-world AI deployments</li>
+          <li>Multimodal foundation models and representation learning</li>
+          <li>Post-training and alignment for LLM/VLM systems</li>
+          <li>Inference-time reasoning and hallucination mitigation</li>
+          <li>Trustworthy vision-language model behavior and grounding</li>
+          <li>Latency-cost-quality trade-offs in AI production systems</li>
         </ul>
 
-        <h2>Selected Projects</h2>
+        <h2 class="section-title">Publications</h2>
+        <ul>
+          <li>
+            M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for
+            Generalizable EEG Analysis via Preference-Guided Alignment," MICCAI 2026.
+            <strong>[Accepted]</strong>
+          </li>
+          <li>
+            M. Azfar, S. Bharadwaj, A. Vashist, R. K. Salla, D. Verma, and R. M. Amancherla,
+            "Multiscale Diagnostics of Visual Language Models," ICCV Workshop 2025.
+            <a href="#">[link]</a>
+          </li>
+          <li>
+            M. Azfar*, S. Bharadwaj*, "Balanced CutMix: Enhancing Image Classification Through
+            Curriculum Learning," ACCV 2024 (Poster). <a href="#">[link]</a>
+          </li>
+          <li>
+            M. Azfar*, S. Bharadwaj*, A. Shasikumar, "Improving Smooth GradCAM++ with Gradient
+            Weighting Techniques," IEEE INDICON 2024 (Spotlight). <a href="#">[link]</a>
+          </li>
+        </ul>
+
+        <h2 class="section-title">Research on Hallucinations and Alignment (Under Review)</h2>
+        <ul>
+          <li>
+            M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement
+            via Hierarchical Residual Subspace Interference in Vision-Language Models,"
+            under review, EMNLP 2026.
+          </li>
+          <li>
+            M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer
+            Vision-Language Models," under review, EMNLP 2026.
+          </li>
+          <li>
+            M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under
+            Prior-Dominant Collapse," under review, EMNLP 2026.
+          </li>
+        </ul>
+
+        <h2 class="section-title">Working Papers</h2>
+        <ul>
+          <li>
+            M. Azfar, "Hallucination as Estimator Misspecification under Latent Ambiguity in
+            Vision-Language Models." <a href="#">[link]</a>
+          </li>
+          <li>
+            M. Azfar, "Hallucinations Live in a Low-Rank, Transferable Subspace:
+            Characterization and Mitigation via Anti-Expert Orthogonalization." <a href="#">[link]</a>
+          </li>
+        </ul>
+
+        <div class="grid">
+          <div>
+            <h2 class="section-title">Experience</h2>
+
+            <div class="role">
+              <div class="role-title">Lead AI Engineer - Retail AI R&D</div>
+              <div class="role-meta">Impact Analytics | Jun 2025 - Present | Bengaluru, India</div>
+              <ul>
+                <li>Post-trained enterprise Text-to-SQL LLMs with SFT and preference optimization, improving SQL execution accuracy by 15% and reducing invalid SQL by 20%.</li>
+                <li>Built alignment and hallucination evaluation pipelines with execution-based verification and self-correction loops.</li>
+                <li>Developed contextual multi-armed bandit routing for agent/tool selection using online reward feedback.</li>
+                <li>Scaled inference and tool-augmented reasoning with vLLM for large-volume serving.</li>
+              </ul>
+            </div>
+
+            <div class="role">
+              <div class="role-title">Senior Researcher - Medical AI</div>
+              <div class="role-meta">Tanuh.ai | Jul 2023 - Apr 2025</div>
+              <ul>
+                <li>Developed multimodal EEG-report foundation modeling pipelines for robust neurological analysis.</li>
+                <li>Designed GTRE with preference-guided alignment for improved cross-dataset generalization.</li>
+                <li>Scaled training on multi-GPU infrastructure using distributed mixed-precision workflows.</li>
+                <li>Reduced evaluation turnaround from 3 days to 8 hours while increasing throughput.</li>
+              </ul>
+            </div>
+
+            <div class="role">
+              <div class="role-title">Assistant Manager - Electrical and IT</div>
+              <div class="role-meta">Chennai Metro Rail Limited | Aug 2018 - Jul 2022</div>
+              <ul>
+                <li>Built BERT-based NLP pipelines for automated document understanding and summarization.</li>
+                <li>Delivered vision models for infrastructure monitoring and safety-critical detection.</li>
+                <li>Optimized edge object detection on NVIDIA Jetson with TensorRT for sub-50 ms inference.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="section-title">Education</h2>
+            <ul>
+              <li>
+                <strong>Indian Institute of Science, Bengaluru</strong><br />
+                M.Tech, Machine Learning and Signal Processing (2022-2024), GPA: 8.65/10
+              </li>
+              <li>
+                <strong>Aligarh Muslim University, India</strong><br />
+                B.Tech, Electrical and Electronics Engineering (2013-2017), GPA: 9.28/10
+              </li>
+            </ul>
+            <p class="muted">
+              Key courses: Advanced Deep Representation Learning, Optimization for AI/ML,
+              Random Processes, Pattern Recognition, Reinforcement Learning, Linear Algebra,
+              Data Structures and Algorithms.
+            </p>
+            <p class="muted">
+              Teaching: TA, Data Analytics and Random Processes (IISc, 2022-23).
+            </p>
+
+            <h2 class="section-title">Technical Competencies</h2>
+            <ul>
+              <li><strong>LLM Post-Training:</strong> SFT, instruction tuning, LoRA/QLoRA, GRPO-style preference optimization, reward design, TRL</li>
+              <li><strong>Multimodal and Agents:</strong> VLMs, agentic AI, multi-agent systems, LangGraph, Graph RAG, multimodal RAG</li>
+              <li><strong>Inference and Eval:</strong> vLLM, faithfulness and hallucination evaluation, knowledge graphs, vector databases</li>
+              <li><strong>Infra:</strong> PyTorch, CUDA, Transformers, Python, Linux, DDP/FSDP</li>
+            </ul>
+
+            <h2 class="section-title">Open Source</h2>
+            <ul>
+              <li>
+                <a href="https://github.com/AZFAR176/llm-evaluation-toolkit">LLM Evaluation Toolkit</a> - hallucination and faithfulness evaluation framework.
+              </li>
+              <li>
+                <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">Text-to-SQL RL Pipeline</a> - post-training framework with reward-driven SQL generation.
+              </li>
+              <li>
+                <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">Contextual Bandits For Multi-Agent Systems</a> - adaptive routing for agentic systems.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="section-title">Selected Projects</h2>
         <ul>
           <li>
             <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">
               Contextual Bandits For Multi-Agent Systems
             </a>
-            <span class="muted"> - adaptive routing with LinUCB and Thompson sampling.</span>
+            <span class="muted"> - contextual MAB routing for dynamic agent/tool selection with online feedback.</span>
           </li>
           <li>
             <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">
               Text-to-SQL RL Pipeline
             </a>
-            <span class="muted"> - SFT/DPO/GRPO/PPO-style training for text-to-SQL models.</span>
+            <span class="muted"> - SFT/DPO/GRPO/PPO-style post-training pipeline for robust SQL generation.</span>
           </li>
           <li>
             <a href="https://github.com/AZFAR176/llm-evaluation-toolkit">
               LLM Evaluation Toolkit
             </a>
-            <span class="muted"> - benchmark adapters and reporting for LLM system evaluation.</span>
+            <span class="muted"> - benchmark adapters, faithfulness metrics, and automated reports.</span>
           </li>
         </ul>
 
-        <h2>Opportunities</h2>
+        <h2 class="section-title">Opportunities</h2>
         <p>
-          I am interested in PhD opportunities and research engineering roles in LLM systems,
-          reasoning, and reinforcement learning for intelligent agents.
+          I am interested in PhD opportunities and research engineering roles in multimodal
+          foundation models, LLM/VLM alignment, inference-time reasoning, and trustworthy AI.
         </p>
 
         <footer>
-          Last updated: August 2026
+          Last updated: August 2026. Replace placeholder publication/CV links with final URLs.
         </footer>
       </section>
     </main>
