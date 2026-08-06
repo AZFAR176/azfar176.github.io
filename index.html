@@ -97,6 +97,15 @@
         border: 1px solid var(--line);
         border-radius: 8px;
       }
+      .highlight ul {
+        margin: 8px 0 0;
+      }
+      .highlight li {
+        margin: 4px 0;
+      }
+      .research-philosophy {
+        margin-top: 14px;
+      }
       .compact-list {
         list-style: none;
         margin: 0;
@@ -148,6 +157,21 @@
         font-size: 0.9rem;
         background: #fafafa;
         color: #1f2937;
+      }
+      .area-group {
+        margin-top: 12px;
+      }
+      .area-group:first-of-type {
+        margin-top: 0;
+      }
+      .area-title {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      .new-tag {
+        margin-left: 4px;
       }
       .edu-grid {
         display: grid; grid-template-columns: 1fr;
@@ -206,7 +230,7 @@
       <main class="main">
         <h1>Mohd Azfar</h1>
         <div class="tagline-row">
-          <p class="tagline">Research Engineer | Multimodal Foundation Models | LLM/VLM Post-Training | Trustworthy AI</p>
+          <p class="tagline">Research Engineer | Multimodal Foundation Models | Post-Training | Representation Learning</p>
           <div class="quick-links">
             <a class="button" href="https://github.com/AZFAR176">GitHub</a>
             <a class="button" href="mailto:azfar45@gmail.com">Email</a>
@@ -214,28 +238,42 @@
         </div>
         <div class="about">
           <p>
-            I work on making large multimodal models more reliable in real systems. My focus is
-            on post-training and alignment for LLMs/VLMs, preference optimization, and reducing
-            hallucinations with stronger grounding and evaluation.
+            I work on making large multimodal models more reliable in real systems. My research
+            focuses on post-training and alignment for multimodal foundation models, with
+            particular interests in preference optimization, representation learning, inference-time
+            steering, and hallucination mitigation.
           </p>
           <p>
-            I enjoy building research that can move from paper ideas to deployable systems:
-            better reward design, safer inference-time behavior, and practical agent routing.
+            I enjoy studying how representation learning, reinforcement learning, and inference-time
+            interventions can make foundation models more reliable while remaining practical for
+            real-world deployment.
           </p>
         </div>
 
         <div class="highlight">
-          <strong>Current work emphasis:</strong> LLM/VLM post-training, reliability-first evaluation, safety-aware agent routing, and high-throughput vLLM inference.
+          <strong>Current research explores</strong>
+          <ul>
+            <li>RLVR for foundation model post-training</li>
+            <li>Representation-level alignment</li>
+            <li>Inference-time steering</li>
+            <li>Hallucination mitigation</li>
+            <li>Agentic reasoning</li>
+          </ul>
         </div>
         <p class="muted">
           Research goal: build multimodal systems that are reliably grounded, safer under distribution shift, and measurably less hallucinatory through strong representation-level alignment and inference-time control.
         </p>
+        <div class="research-philosophy">
+          <h2>Research Philosophy</h2>
+          <p>
+            I am interested in understanding why multimodal foundation models fail and how
+            representation learning, reinforcement learning, and inference-time interventions can
+            make them more reliable. My long-term goal is to build foundation models whose reasoning
+            and grounding can be systematically improved rather than simply scaled.
+          </p>
+        </div>
         <p>
-          Outside research and engineering, I enjoy reading, watching sitcoms, and journaling ideas.
-        </p>
-        <p>
-          On a lighter note, I spend a lot of time discussing ideas with AI. Some ideas are great,
-          some are gloriously strange, and the best ones are always worth debating with humans.
+          Outside research, I enjoy reading, journaling research ideas, and watching sitcoms.
         </p>
         <p>
           If you would like to collaborate, discuss research, or build something together, feel free
@@ -248,7 +286,7 @@
             M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for
             Generalizable EEG Analysis via Preference-Guided Alignment," <em>Medical Image Computing
             and Computer-Assisted Intervention (MICCAI)</em>, 2026.
-            <strong>[Accepted]</strong> <strong>[NEW]</strong>
+            <strong>[Accepted]</strong> <strong class="new-tag">✨ NEW</strong>
             <a href="https://drive.google.com/file/d/1PhVH8EvVGTHi2NHqk41rSpE3ggIUJ93-/view?usp=drive_link">[paper]</a>
           </li>
           <li>
@@ -269,10 +307,23 @@
         </ul>
 
         <h2>Under Review</h2>
+        <p class="muted">
+          These works investigate inference-time alignment, representation learning, and
+          hallucination mitigation for multimodal foundation models.
+        </p>
         <ul>
-          <li>M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement via Hierarchical Residual Subspace Interference in Vision-Language Models," under review (EMNLP 2026).</li>
-          <li>M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer Vision-Language Models," under review (EMNLP 2026).</li>
-          <li>M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under Prior-Dominant Collapse," under review (EMNLP 2026).</li>
+          <li>
+            M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement via
+            Hierarchical Residual Subspace Interference in Vision-Language Models," under review (EMNLP 2026).
+          </li>
+          <li>
+            M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer
+            Vision-Language Models," under review (EMNLP 2026).
+          </li>
+          <li>
+            M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under
+            Prior-Dominant Collapse," under review (EMNLP 2026).
+          </li>
         </ul>
 
         <h2>Working Papers</h2>
@@ -290,7 +341,7 @@
         <h2>GitHub Repositories</h2>
         <ul>
           <li>
-            <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">Contextual-Bandits-For-Multi-Agent-Systems</a>:
+            <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">BanditAgent</a>:
             contextual multi-armed bandit framework for dynamic agent routing and tool selection with online feedback.
           </li>
           <li>
@@ -344,22 +395,34 @@
 
         <section class="panel">
           <h2>Areas</h2>
-          <div class="chip-cloud">
-            <span class="chip">SFT</span>
-            <span class="chip">LoRA/QLoRA</span>
-            <span class="chip">GRPO-style Preference Optimization</span>
-            <span class="chip">Reward Design</span>
-            <span class="chip">TRL</span>
-            <span class="chip">VLMs</span>
-            <span class="chip">Agentic AI</span>
-            <span class="chip">LangGraph</span>
-            <span class="chip">Graph RAG</span>
-            <span class="chip">Multimodal RAG</span>
-            <span class="chip">vLLM</span>
-            <span class="chip">Hallucination Evaluation</span>
-            <span class="chip">PyTorch</span>
-            <span class="chip">CUDA</span>
-            <span class="chip">DDP/FSDP</span>
+          <div class="area-group">
+            <span class="area-title">Post-training</span>
+            <div class="chip-cloud">
+              <span class="chip">SFT</span>
+              <span class="chip">RLVR</span>
+              <span class="chip">Preference Optimization</span>
+            </div>
+          </div>
+          <div class="area-group">
+            <span class="area-title">Inference</span>
+            <div class="chip-cloud">
+              <span class="chip">vLLM</span>
+              <span class="chip">CUDA</span>
+            </div>
+          </div>
+          <div class="area-group">
+            <span class="area-title">Multimodal</span>
+            <div class="chip-cloud">
+              <span class="chip">VLMs</span>
+              <span class="chip">Graph RAG</span>
+            </div>
+          </div>
+          <div class="area-group">
+            <span class="area-title">Evaluation</span>
+            <div class="chip-cloud">
+              <span class="chip">Hallucination Detection</span>
+              <span class="chip">Faithfulness</span>
+            </div>
           </div>
         </section>
       </aside>
