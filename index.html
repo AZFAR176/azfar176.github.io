@@ -238,35 +238,33 @@
         </div>
         <div class="about">
           <p>
-            I work on making large multimodal models more reliable in real systems. My research
-            focuses on post-training and alignment for multimodal foundation models, with
-            particular interests in preference optimization, representation learning, inference-time
-            steering, and hallucination mitigation.
+            I work on multimodal foundation models, with a focus on reliability, grounded
+            reasoning, and post-training. My recent research studies failure modes in
+            vision-language models, particularly hallucination and visual grounding, and explores
+            representation-level and inference-time interventions for improving their reliability.
           </p>
           <p>
-            I enjoy studying how representation learning, reinforcement learning, and inference-time
-            interventions can make foundation models more reliable while remaining practical for
-            real-world deployment.
+            I am also interested in reinforcement-learning-based post-training and how verifiable
+            feedback can be used to improve multimodal reasoning and grounding.
           </p>
         </div>
 
         <div class="highlight">
-          <strong>Current research explores</strong>
+          <strong>Current research interests</strong>
           <ul>
-            <li>RLVR for foundation model post-training</li>
-            <li>Representation-level alignment</li>
-            <li>Inference-time steering</li>
-            <li>Hallucination mitigation</li>
-            <li>Agentic reasoning</li>
+            <li>Multimodal reasoning and visual grounding</li>
+            <li>VLM reliability, hallucination, and representation-level alignment</li>
+            <li>Reinforcement learning and post-training</li>
+            <li>Scalable training and inference</li>
           </ul>
         </div>
         <div class="research-philosophy">
           <h2>Research Philosophy</h2>
           <p>
-            I am interested in understanding how multimodal foundation models perceive, represent,
-            and reason about the world. Rather than treating reliability as a scaling problem, I
-            hope to develop principled methods that improve how these models learn, adapt, and stay
-            grounded across perception, reasoning, and long-horizon interaction.
+            I am interested in understanding why multimodal models fail to remain grounded in their
+            inputs, and how their internal representations change when this happens. My broader goal
+            is to connect these insights with alignment and post-training methods that make
+            multimodal reasoning more reliable without requiring expensive retraining.
           </p>
         </div>
         <p>
@@ -277,14 +275,18 @@
           to reach out by email.
         </p>
 
-        <h2>Publications</h2>
+        <h2>Selected Research</h2>
+        <h3>Publications</h3>
         <ul>
           <li>
-            M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for
-            Generalizable EEG Analysis via Preference-Guided Alignment," <em>Medical Image Computing
-            and Computer-Assisted Intervention (MICCAI)</em>, 2026.
-            <strong>[Accepted]</strong> <strong class="new-tag">✨ NEW</strong>
+            M. Azfar, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for Generalizable
+            EEG Analysis via Preference-Guided Alignment," <em>Medical Image Computing and
+            Computer-Assisted Intervention (MICCAI)</em>, 2026. <strong>[Accepted]</strong>
+            <br />
+            Aligns physiological signals with language-derived semantic representations through
+            preference-guided cross-modal learning for generalization across heterogeneous datasets.
             <a href="https://drive.google.com/file/d/1PhVH8EvVGTHi2NHqk41rSpE3ggIUJ93-/view?usp=drive_link">[paper]</a>
+            <a href="https://github.com/AZFAR176/GTRE-">[code]</a>
           </li>
           <li>
             M. Azfar, S. Bharadwaj, A. Vashist, R. K. Salla, D. Verma, and R. M. Amancherla,
@@ -303,43 +305,46 @@
           </li>
         </ul>
 
-        <h2>Under Review</h2>
+        <h3>VLM Reliability &amp; Grounding</h3>
         <p class="muted">
-          These works investigate inference-time alignment, representation learning, and
-          hallucination mitigation for multimodal foundation models.
+          Selected ongoing work in VLM grounding and reliability.
         </p>
         <ul>
           <li>
-            M. Azfar and I. D. Khan, "G-CRNP: Inference-Time Selective Attribute Disentanglement via
-            Hierarchical Residual Subspace Interference in Vision-Language Models," under review (EMNLP 2026).
-          </li>
-          <li>
             M. Azfar and I. D. Khan, "SPARK: Representation-Level KV Memory Alignment for Safer
-            Vision-Language Models," under review (EMNLP 2026).
+            Vision-Language Models," under review at AAAI 2027.
+            <br />
+            Studies representation-level KV interventions for improving visual grounding while
+            selectively preserving benign model behavior.
+            <a href="https://arxiv.org/abs/2609.14258">[paper]</a>
           </li>
           <li>
             M. Azfar and I. D. Khan, "Spectral Subspace Redistribution for LVLM Grounding under
-            Prior-Dominant Collapse," under review (EMNLP 2026).
+            Prior-Dominant Collapse," under review at WACV 2027.
+            <br />
+            Introduces a training-free spectral controller that redistributes attention subspaces to
+            mitigate hallucinations with ~1.8% inference overhead.
           </li>
         </ul>
 
-        <h2>Working Papers</h2>
+        <h3>RL &amp; Post-Training</h3>
         <ul>
           <li>
-            M. Azfar, "Hallucination as Estimator Misspecification under Latent Ambiguity in Vision-Language Models."
-            <a href="https://drive.google.com/file/d/17L0_W7UzGkBE7v425X9texov82ZFv49z/view?usp=sharing">[manuscript]</a>
-          </li>
-          <li>
-            M. Azfar, "Hallucinations Live in a Low-Rank, Transferable Subspace: Characterization and Mitigation via Anti-Expert Orthogonalization."
-            <a href="https://drive.google.com/file/d/1mDhl3-M7LPgMjbJRM9O0u6w-j4rRRdCV/view">[manuscript]</a>
+            "EnterpriseSQL-RL: Structural Credit Assignment Beyond Execution Rewards," working paper.
+            <br />
+            GRPO/RLVR post-training with execution- and structure-aware rewards for enterprise
+            Text-to-SQL, improving execution accuracy by 15% and reducing invalid SQL by 20%.
+            <span class="muted">[paper coming soon]</span>
+            <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">[code]</a>
           </li>
         </ul>
 
-        <h2>GitHub Repositories</h2>
+        <h2>Selected Open Source</h2>
         <ul>
           <li>
-            <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">BanditAgent</a>:
-            contextual multi-armed bandit framework for dynamic agent routing and tool selection with online feedback.
+            <a href="https://github.com/AZFAR176/GTRE-">GTRE</a>:
+            code for cross-modal representation alignment toward generalizable physiological-semantic
+            learning.
           </li>
           <li>
             <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">Text-to-SQL RLVR Pipeline</a>:
@@ -353,13 +358,23 @@
             <a href="https://github.com/AZFAR176/LLm-Gpu-Profiler">GPU Profiler Agent</a>:
             LLM-driven GPU performance debugging agent with telemetry grounding, bottleneck diagnosis, and validation workflows for training and inference.
           </li>
+          <li>
+            <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">Contextual Bandits for Multi-Agent Systems</a>:
+            contextual multi-armed bandit framework for dynamic agent routing and tool selection with online feedback.
+          </li>
         </ul>
-        <h2>Research Collaborations</h2>
+        <h2>Multimodal Medical AI - Tanuh.ai / IISc</h2>
         <p>
-          Through sponsored research collaborations with Amazon, Zoox, and IISc Bengaluru, we explored
-          perception for autonomous systems by studying how vision-language foundation models can achieve
-          more reliable object grounding, spatial consistency across dynamic scenes, and uncertainty-aware
-          reasoning under occlusion, ambiguity, and distribution shift.
+          Developed vision and multimodal learning methods for smartphone-based oral cancer
+          screening under limited clinical data, acquisition variability, and cross-hospital
+          distribution shifts. Explored text-guided spatial grounding, quality-aware representation
+          learning, and depth-guided generative augmentation.
+        </p>
+        <h2>Experience &amp; Collaborations</h2>
+        <p>
+          Worked on multimodal perception research through sponsored collaborations involving Amazon,
+          Zoox, and IISc Bengaluru, studying object grounding, spatial consistency, and robust visual
+          reasoning under occlusion and distribution shift.
         </p>
       </main>
 
@@ -437,7 +452,7 @@
     </div>
 
     <footer>
-      Last updated: August 2026.
+      Last updated: September 2026.
     </footer>
   </body>
 </html>
