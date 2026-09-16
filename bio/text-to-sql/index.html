@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Critic Feedback for Text-to-SQL Retries | Mohd Azfar</title>
+    <style>
+      :root {
+        --text: #111827;
+        --muted: #4b5563;
+        --link: #1d4ed8;
+        --line: #e5e7eb;
+      }
+      body {
+        margin: 0 auto;
+        max-width: 760px;
+        padding: 36px 20px 56px;
+        font-family: "Avenir Next", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        background: #fff;
+        color: var(--text);
+        line-height: 1.68;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.85rem;
+        line-height: 1.25;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      }
+      h2 {
+        margin: 28px 0 8px;
+        font-size: 1.15rem;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      }
+      p { margin: 10px 0; }
+      ul { margin: 8px 0 0; padding-left: 18px; }
+      li { margin: 7px 0; }
+      a { color: var(--link); }
+      .muted { color: var(--muted); }
+      .button {
+        display: inline-block;
+        padding: 6px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        background: #fafafa;
+        font-size: 0.94rem;
+      }
+      .nav { margin-bottom: 22px; }
+      footer {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="nav"><a class="button" href="../index.html">← Research</a></p>
+    <h1>Critic feedback for Text-to-SQL retries</h1>
+    <p class="muted">
+      From EnterpriseSQL-RL: how the runtime decides to accept, retry, or abstain,
+      and what diagnostic is passed back to the policy.
+    </p>
+
+    <p>
+      The trained generator is not used as an isolated SQL writer. At inference it
+      sits inside an agent that retrieves schema context, generates a candidate,
+      validates it, executes it in a sandbox, and only then applies a
+      query-conditioned semantic critic. If any stage fails, the agent retries
+      with a diagnostic from the stage that failed. This critic is an
+      inference-time controller. It is not a GRPO reward.
+    </p>
+
+    <h2>Why the critic exists</h2>
+    <p>
+      A query can be syntactically valid, schema-valid, and executable, and still
+      fail to represent the user request. Typical cases include using
+      <code>COUNT</code> instead of <code>SUM</code>, dropping a location or
+      temporal filter, inverting a ranking, or grouping at the wrong
+      granularity. Deterministic checks cannot catch these intent errors, so the
+      critic is invoked only after static validation and successful execution.
+    </p>
+
+    <h2>What the critic sees</h2>
+    <p>
+      The critic compares the user request <em>q</em>, a short dialogue context
+      <em>h<sub>q</sub></em> used only to resolve references, the constructed
+      SQL <em>y</em>, and an execution-result summary
+      τ<sub>exec</sub> = (result columns, row count, bounded sample rows).
+    </p>
+    <p>
+      It does not receive the database schema, retrieval results, or join
+      metadata. It is not allowed to re-check table or column existence,
+      aliases, or join legality, and it must not invent schema elements that are
+      not already in <em>y</em>. Those checks belong to the deterministic
+      validator. The split is intentional: the validator asks whether the SQL is
+      legal to run; the critic asks whether the executed SQL preserved the
+      request.
+    </p>
+
+    <h2>How the critic decides</h2>
+    <p>
+      It extracts explicit request conditions (entities, measures, filters,
+      temporal constraints, grouping, ranking, limits, and expected output) and
+      compares them with an interpretation of the constructed SQL and the
+      observed result. Each condition is marked satisfied, violated, missing, or
+      uncertain. An equivalent SQL formulation is not treated as an error.
+      Result samples are used only as evidence of an observable contradiction;
+      an empty result is not automatically a failure, and an unusual value alone
+      is not enough to reject a query.
+    </p>
+    <p>The critic returns one of three decisions:</p>
+    <ul>
+      <li>
+        <strong>Pass</strong> — no concrete request–SQL contradiction was found.
+        This is not a proof of correctness.
+      </li>
+      <li>
+        <strong>Retry</strong> — at least one explicit condition is missing or
+        violated. The critic must name the unmet condition, the conflicting or
+        missing SQL operation, the supporting evidence, and one intent-level
+        repair instruction. It must not propose new schema.
+      </li>
+      <li>
+        <strong>Abstain</strong> — the request is materially ambiguous and needs
+        clarification. Confidence alone is not a retry signal.
+      </li>
+    </ul>
+
+    <h2>What feedback is sent on a retry</h2>
+    <p>
+      Validation is ordered. A retry is triggered if static validation fails, if
+      sandboxed execution fails or times out, or if the critic returns Retry.
+      The diagnostic passed to correction depends on which stage failed:
+    </p>
+    <ul>
+      <li>
+        <strong>Static diagnostic</strong> — parser errors, unknown identifiers,
+        invalid aliases, illegal joins, prohibited operations, or format
+        violations.
+      </li>
+      <li>
+        <strong>Execution diagnostic</strong> — database exceptions, timeouts, or
+        other sandbox failures.
+      </li>
+      <li>
+        <strong>Semantic diagnostic</strong> — only the unmet request condition,
+        supporting SQL or result evidence, and an intent-level repair
+        instruction. The critic says what part of the request was not
+        preserved; it does not rewrite the SQL.
+      </li>
+    </ul>
+    <p>
+      On retry, the policy receives the original request, the retrieved schema
+      (even though the critic never saw it), the previous SQL, and this
+      diagnostic. The correction step is required to fix the diagnosed issue
+      while preserving already-satisfied conditions, and it may use only tables,
+      columns, and joins present in the supplied schema. Every corrected
+      candidate re-enters the pipeline from the beginning. The loop is bounded
+      by a retry budget <em>K</em>. If nothing passes, the runtime clarifies or
+      abstains.
+    </p>
+
+    <h2>Relation to training</h2>
+    <p>
+      GRPO training uses a gated execution / AST / <em>n</em>-gram reward. The
+      semantic critic is not part of that objective. Training teaches the
+      generator to produce executable, structurally closer programs; the critic
+      is reserved for accept / retry / abstain decisions at inference.
+    </p>
+
+    <p>
+      <a href="https://drive.google.com/file/d/1VLNaSUlqKvdjoW_CC5l3RoCbU4gyEYBM/view?usp=sharing">[paper]</a>
+      <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">[code]</a>
+    </p>
+    <footer>
+      <a href="../index.html">← Back to research</a>
+    </footer>
+  </body>
+</html>
