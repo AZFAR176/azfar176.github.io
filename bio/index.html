@@ -249,11 +249,8 @@
         <div class="research-philosophy">
           <h2>Research Philosophy</h2>
           <p>
-            I am interested in how multimodal models use visual evidence during reasoning, how this
-            dependence can be tested through controlled and counterfactual interventions, and how
-            such signals can support verifiable post-training. A direction I am currently exploring
-            is extending this toward agents that can recognize insufficient evidence and actively
-            acquire additional observations.
+            I am interested in building multimodal models whose decisions can be traced to relevant
+            input evidence, and in using this connection to improve model training and reliability.
           </p>
         </div>
         <p>
@@ -286,9 +283,9 @@
         <ul>
           <li>
             <strong>Multimodal Oral Cancer Screening</strong> — <em>Tanuh.ai, MoE AI Centre of
-            Excellence, IISc</em>. Developed smartphone-based models across diverse Indian
-            populations and acquisition settings, with work on visual grounding, controlled and
-            counterfactual interventions, and verifiable feedback for multimodal post-training.
+            Excellence, IISc</em>. Smartphone-based multimodal models for diverse Indian
+            populations and acquisition settings, with a focus on grounded and reliable clinical
+            reasoning.
             <a href="https://www.tanuh.ai/solutions/oral-cancer">[Project]</a>
             <a href="https://drive.google.com/file/d/1KUR3_N1M3H1WIETI76W7KyK602W04f_4/view?usp=sharing">[Slides]</a>
           </li>
@@ -366,24 +363,16 @@
           </li>
         </ul>
 
-        <h2>Selected Research Experience</h2>
-        <p>
-          At Tanuh.ai / the Ministry of Education AI Centre of Excellence at IISc, I worked on
-          multimodal models for smartphone-based oral cancer screening across diverse Indian
-          populations and acquisition settings. My work explored clinical-description-guided visual
-          grounding, controlled and counterfactual interventions, and verifiable reward signals for
-          multimodal post-training.
-          <a href="https://www.tanuh.ai/solutions/oral-cancer">[Project]</a>
-          <a href="https://drive.google.com/file/d/1KUR3_N1M3H1WIETI76W7KyK602W04f_4/view?usp=sharing">[Slides]</a>
-        </p>
-
         <h2>Current Research Direction</h2>
         <p>
-          I am exploring how grounded multimodal models can move from passive evidence verification
-          toward active evidence acquisition. When the available visual evidence is insufficient or
-          ambiguous, an agent should be able to recognize what is missing, select an informative
-          action such as requesting another view or relevant context, and re-ground its decision on
-          the resulting evidence.
+          My work on smartphone-based clinical models led me to a broader question: can we verify
+          not only whether a multimodal model is correct, but whether its decision actually depends
+          on the relevant visual evidence?
+        </p>
+        <p>
+          This motivates a progression from grounding and counterfactual verification to verifiable
+          multimodal post-training, and ultimately to agents that can recognize when the available
+          evidence is insufficient and acquire what is missing.
         </p>
         <p>
           <strong>Research flow:</strong> Visual Grounding → Counterfactual Verification →
@@ -391,6 +380,24 @@
         </p>
         <p>
           <a href="https://drive.google.com/file/d/1KUR3_N1M3H1WIETI76W7KyK602W04f_4/view?usp=sharing">[Research Slides]</a>
+        </p>
+
+        <h3>Evidence-Seeking Multimodal Agents</h3>
+        <p>
+          When the current observation is insufficient, the model should not be forced to make a
+          prediction. I am exploring an agentic formulation in which the model can identify missing
+          evidence, select an informative action, and reason again from the resulting observation.
+        </p>
+        <p>
+          <strong>Agent loop:</strong>
+          Observe → Ground &amp; Reason → Verify → Acquire Evidence → Re-ground → Predict / Abstain
+        </p>
+        <p>
+          <strong>Actions:</strong> another view · zoom · ask for context · retrieve · predict · abstain
+        </p>
+        <p>
+          <strong>Learning objective:</strong> reward correct and grounded decisions together with
+          useful evidence acquisition, while penalizing unnecessary actions.
         </p>
 
         <h2>Collaborations</h2>
