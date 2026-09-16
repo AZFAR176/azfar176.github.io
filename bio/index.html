@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Mohd Azfar | Research Direction</title>
+    <title>Mohd Azfar | Grounded Multimodal Reasoning</title>
     <style>
       :root {
         --text: #111827;
@@ -39,19 +39,10 @@
         font-size: 1.02rem;
         font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
       }
-      p {
-        margin: 8px 0;
-      }
-      ul {
-        margin: 8px 0 0;
-        padding-left: 18px;
-      }
-      li {
-        margin: 8px 0;
-      }
-      a {
-        color: var(--link);
-      }
+      p { margin: 8px 0; }
+      ul { margin: 8px 0 0; padding-left: 18px; }
+      li { margin: 8px 0; }
+      a { color: var(--link); }
       .tagline {
         margin: 6px 0 10px;
         color: var(--muted);
@@ -61,9 +52,7 @@
         margin: 0 0 14px;
         color: var(--muted);
       }
-      .top-links a {
-        text-decoration: none;
-      }
+      .top-links a { text-decoration: none; }
       .divider {
         border: 0;
         border-top: 1px solid var(--line);
@@ -95,14 +84,15 @@
         padding: 12px;
         background: #fff;
       }
-      .flow-stage {
-        margin: 10px 0 14px;
-      }
-      .flow-stage strong {
-        display: block;
-      }
-      .arrow {
-        color: var(--muted);
+      .flow-stage { margin: 10px 0 14px; }
+      .flow-stage strong { display: block; }
+      .arrow { color: var(--muted); }
+      blockquote {
+        margin: 12px 0;
+        padding: 8px 12px;
+        border-left: 3px solid var(--line);
+        color: #1f2937;
+        background: #fafafa;
       }
       footer {
         margin-top: 28px;
@@ -115,36 +105,41 @@
   </head>
   <body>
     <h1>Mohd Azfar</h1>
-    <p class="tagline">Grounded Multimodal Reasoning | Post-Training | Evidence-Seeking Agents</p>
+    <p class="tagline">Grounded Multimodal Reasoning | Post-Training | Agentic Systems</p>
     <p class="top-links">
-      <a href="https://drive.google.com/file/d/1PhVH8EvVGTHi2NHqk41rSpE3ggIUJ93-/view?usp=drive_link">Slides</a> |
-      <a href="../index.html">CV/Home</a> |
+      <a href="../index.html">Home</a> |
       <a href="https://github.com/AZFAR176">GitHub</a> |
-      <a href="mailto:azfar45@gmail.com">Email</a>
+      <a href="mailto:azfar45@gmail.com">Email</a> |
+      <a href="https://azfar176.github.io/">CV</a>
     </p>
 
     <p>
-      I work on reliable multimodal reasoning, with recent research on visual grounding, verifiable
+      I work on multimodal and language models, with recent research on visual grounding, verifiable
       feedback, RL-based post-training, and agentic systems.
     </p>
     <p>
       A central question in my work is how to verify that model predictions are supported by relevant
-      visual evidence, and how this feedback can be used for post-training and active evidence acquisition.
+      visual evidence, and how such feedback can be used to improve reasoning through post-training or
+      additional evidence acquisition.
     </p>
 
     <hr class="divider" />
 
-    <h2>Grounded Multimodal Reasoning &amp; Evidence-Seeking Agents</h2>
+    <h2>Grounded Multimodal Reasoning</h2>
     <div class="focus-panel">
       <p>
-        My current direction builds from smartphone-based clinical vision toward models that can verify
-        the evidence behind their predictions and, when that evidence is insufficient, actively seek
-        additional information.
+        My work at Tanuh.ai / the Ministry of Education AI Centre of Excellence at IISc studied
+        smartphone-based oral cancer screening across diverse Indian populations and acquisition settings.
+      </p>
+      <p>
+        Beyond predictive performance, I have been interested in whether multimodal models base their
+        decisions on clinically relevant visual cues, how this behaviour changes under controlled
+        interventions, and whether these signals can provide verifiable feedback for post-training.
       </p>
       <div class="quick-links">
-        <a href="https://drive.google.com/file/d/1PhVH8EvVGTHi2NHqk41rSpE3ggIUJ93-/view?usp=drive_link">Slides</a>
-        <a href="#selected-research">Selected Research</a>
-        <a href="#grounded-multimodal-reasoning-flow">Research Flow</a>
+        <a href="https://drive.google.com/file/d/1KUR3_N1M3H1WIETI76W7KyK602W04f_4/view?usp=sharing">Research Slides</a>
+        <a href="https://www.tanuh.ai/solutions/oral-cancer">Project</a>
+        <a href="#research-flow">Research Flow</a>
         <a href="#future-direction">Future Direction</a>
       </div>
     </div>
@@ -158,8 +153,8 @@
         <strong>Multimodal Oral Cancer Screening</strong> - <em>Tanuh.ai, MoE AI Centre of Excellence, IISc</em>.
         Developed smartphone-based models across diverse Indian populations and acquisition settings, with
         work on visual grounding, controlled interventions, and verifiable feedback for multimodal
-        post-training. <a href="https://github.com/AZFAR176">[Project]</a>
-        <a href="https://drive.google.com/file/d/1PhVH8EvVGTHi2NHqk41rSpE3ggIUJ93-/view?usp=drive_link">[Slides]</a>
+        post-training. <a href="https://www.tanuh.ai/solutions/oral-cancer">[Project]</a>
+        <a href="https://drive.google.com/file/d/1KUR3_N1M3H1WIETI76W7KyK602W04f_4/view?usp=sharing">[Research Slides]</a>
       </li>
     </ul>
 
@@ -167,116 +162,122 @@
     <ul>
       <li>
         <strong>M. Azfar and I. D. Khan</strong>, "SPARK: Representation-Level KV Memory Alignment for Safer
-        Vision-Language Models," <em>under review</em>. Representation-level interventions for improving visual
-        grounding while selectively preserving benign model behaviour. <a href="https://github.com/AZFAR176">[paper]</a>
+        Vision-Language Models," <em>Under review at WACV 2027</em>. Representation-level interventions for
+        improving visual grounding while selectively preserving benign model behaviour.
+        <a href="https://arxiv.org/pdf/2609.14258">[Paper]</a>
       </li>
       <li>
         <strong>M. Azfar and I. D. Khan</strong>, "Spectral Subspace Redistribution for LVLM Grounding under
-        Prior-Dominant Collapse," <em>under review</em>. Training-free intervention for mitigating prior-dominant
-        grounding failures. <a href="https://github.com/AZFAR176">[paper]</a>
+        Prior-Dominant Collapse," <em>Under review at AAAI 2027</em>. Training-free intervention for LVLM
+        grounding failures using spectral redistribution with approximately 1.8% inference overhead.
+        <a href="https://drive.google.com/file/d/1JaJ2Kip2W7fhV45wzEcK1ykvJdPXO3st/view?usp=sharing">[Paper]</a>
       </li>
       <li>
-        <strong>M. Azfar, S. Bharadwaj, A. Vashist, R. K. Salla, D. Verma, and R. M. Amancherla</strong>,
-        "Multiscale Diagnostics of Visual Language Models," <em>ICCV Workshop 2025</em>.
-        <a href="https://drive.google.com/file/d/1X8sgpmNBwMt0rCEsAwdg7KiBl6ffQj7f/view?usp=sharing">[paper]</a>
+        <strong>Multiscale Diagnostics of Visual Language Models</strong> - <em>ICCV Workshop 2025</em>.
+        Studies VLM behaviour under visual scale and acquisition variation.
+        <a href="https://drive.google.com/file/d/1X8sgpmNBwMt0rCEsAwdg7KiBl6ffQj7f/view?usp=drive_link">[Paper]</a>
       </li>
     </ul>
 
     <hr class="divider" />
 
-    <h2 id="grounded-multimodal-reasoning-flow">Research Flow</h2>
+    <h2 id="research-flow">Research Flow</h2>
     <div class="flow-card">
       <div class="flow-stage">
-        <strong>1. Grounding</strong>
-        Use clinical descriptions to guide models toward task-relevant visual regions rather than
-        relying primarily on learned priors.
+        <strong>1. Clinical Visual Grounding</strong>
+        Clinical descriptions guide the model toward task-relevant lesion regions, providing an explicit
+        connection between clinical semantics and visual evidence.
       </div>
       <div class="arrow">↓</div>
       <div class="flow-stage">
-        <strong>2. Robustness</strong>
-        Test whether predictions and supporting regions remain stable under changes in acquisition,
-        viewpoint, scale, illumination, and image quality.
+        <strong>2. Robustness under Acquisition Shift</strong>
+        Evaluate whether predictions and grounding remain stable across changes in patients, devices, image
+        quality, viewpoint, and acquisition conditions.
       </div>
       <div class="arrow">↓</div>
       <div class="flow-stage">
-        <strong>3. Counterfactual Verification</strong>
-        Alter task-relevant visual evidence and test whether model predictions respond accordingly,
-        providing a stronger test of evidence dependence.
+        <strong>3. Controlled &amp; Counterfactual Verification</strong>
+        Use controlled interventions to test invariance to nuisance changes, and counterfactual interventions
+        to test whether predictions respond when task-relevant visual cues are altered.
       </div>
       <div class="arrow">↓</div>
       <div class="flow-stage">
-        <strong>4. Verifiable Post-Training</strong>
-        Convert grounding consistency and counterfactual sensitivity into verifiable reward signals
-        for multimodal RLVR.
+        <strong>4. Verifiable Multimodal Post-Training</strong>
+        Use grounding and counterfactual signals as verifiable feedback for multimodal RLVR, moving beyond
+        outcome-only supervision toward evidence-aware rewards.
       </div>
       <div class="arrow">↓</div>
       <div class="flow-stage">
         <strong>5. Active Evidence Acquisition</strong>
-        Extend passive verification toward agents that recognize insufficient evidence and request the
-        observation or context needed before deciding.
+        Extend verification toward agents that recognize when current evidence is insufficient and acquire an
+        informative new observation before deciding.
       </div>
     </div>
 
     <hr class="divider" />
 
-    <h2 id="future-direction">Future Direction</h2>
-    <h3>Evidence-Seeking Multimodal Agents</h3>
+    <h2 id="future-direction">Future Direction: Evidence-Seeking Multimodal Agents</h2>
     <p>
-      A grounded model still has to make a decision from whatever evidence it receives. In real clinical
-      settings, that evidence may be incomplete, ambiguous, or low quality.
+      A grounded model can still receive an image that is ambiguous, incomplete, or too low-quality to
+      support a reliable decision. Rather than forcing a prediction, I am interested in multimodal agents
+      that can recognize missing evidence and select an informative next action.
     </p>
     <p>
-      I am interested in agents that can recognize this condition and select an informative next action -
-      for example, requesting another view, examining a region more closely, asking for relevant clinical
-      context, retrieving supporting information, or abstaining.
+      Possible actions include requesting another view, examining a region more closely, asking for relevant
+      clinical context, retrieving supporting information, or abstaining when sufficient evidence cannot be obtained.
     </p>
+    <blockquote>
+      Can a multimodal agent learn when its current evidence is insufficient, what additional evidence would
+      be informative, and how to acquire it before making a decision?
+    </blockquote>
+
+    <hr class="divider" />
+
+    <h2>Broader Multimodal Research</h2>
+    <h3>GTRE - MICCAI 2026</h3>
     <p>
-      The broader question is whether multimodal agents can learn not only <strong>how to reason from evidence,
-      but when and what additional evidence to seek.</strong>
+      <strong>M. Azfar</strong>, I. D. Khan, "GTRE: A Physiological-Semantic Foundation Model for Generalizable
+      EEG Analysis via Preference-Guided Alignment." Aligns physiological signals with language-derived semantic
+      representations through preference-guided cross-modal learning for generalization across heterogeneous
+      datasets and acquisition conditions.
+      <a href="https://drive.google.com/file/d/1Hyg6BrnrAS3Ujw38WboSovMrlEZz4kcX/view?usp=sharing">[Paper]</a>
+      <a href="https://github.com/AZFAR176/GTRE-">[Code]</a>
     </p>
 
     <hr class="divider" />
 
-    <h2>Selected Publications</h2>
+    <h2>Related Post-Training &amp; Agent Work</h2>
     <ul>
       <li>
-        <strong>GTRE:</strong> A Physiological-Semantic Foundation Model for Generalizable EEG Analysis via
-        Preference-Guided Alignment - <em>MICCAI 2026</em>. <a href="https://drive.google.com/file/d/1PhVH8EvVGTHi2NHqk41rSpE3ggIUJ93-/view?usp=drive_link">[paper]</a>
+        <strong>EnterpriseSQL-RL</strong> - GRPO/RLVR post-training using execution- and structure-aware
+        verifiable rewards for enterprise Text-to-SQL.
+        <a href="https://drive.google.com/file/d/1VLNaSUlqKvdjoW_CC5l3RoCbU4gyEYBM/view?usp=sharing">[Paper]</a>
+        <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">[Code]</a>
       </li>
       <li>
-        <strong>Multiscale Diagnostics of Visual Language Models</strong> - <em>ICCV Workshop 2025</em>.
-        <a href="https://drive.google.com/file/d/1X8sgpmNBwMt0rCEsAwdg7KiBl6ffQj7f/view?usp=sharing">[paper]</a>
+        <strong>Adaptive Agent Routing</strong> - Contextual bandit-based routing for dynamic agent and tool
+        selection using online feedback over quality, latency, and retries.
+        <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">[Code]</a>
       </li>
       <li>
-        <strong>Balanced CutMix: Enhancing Image Classification Through Curriculum Learning</strong> - <em>ACCV 2024</em>.
-        <a href="https://openreview.net/forum?id=viJW1oihrG">[paper]</a>
+        <strong>LLM GPU Profiler</strong> - Toolkit for diagnosing training and inference bottlenecks across GPU
+        compute, memory, communication, and execution efficiency.
+        <a href="https://github.com/AZFAR176/LLm-Gpu-Profiler">[Code]</a>
       </li>
     </ul>
-    <p><a href="../index.html">See full publication list -></a></p>
 
     <hr class="divider" />
 
-    <h2>Selected Implementations</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">Text-to-SQL RLVR Pipeline</a> -
-        verifiable RL/post-training for grounded Text-to-SQL optimization.
-      </li>
-      <li>
-        <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">BanditAgent</a> -
-        adaptive action/routing for multi-agent systems under online reward feedback.
-      </li>
-      <li>
-        <a href="https://github.com/AZFAR176/LLm-Gpu-Profiler">LLM GPU Profiler</a> -
-        profiling stack for training/inference throughput and systems bottleneck analysis.
-      </li>
-    </ul>
-
-    <footer>
-      <strong>Mohd Azfar</strong> · Research Engineer · M.Tech, IISc Bengaluru ·
-      <a href="../index.html">Home</a> ·
-      <a href="https://github.com/AZFAR176">GitHub</a> ·
+    <h3>About</h3>
+    <p>
+      I am a Research Engineer working across multimodal learning, post-training, and agentic systems.
+      I completed my M.Tech in Machine Learning &amp; Signal Processing at the Indian Institute of Science, Bengaluru.
+    </p>
+    <p>
+      <a href="https://azfar176.github.io/">CV</a> |
+      <a href="https://github.com/AZFAR176">GitHub</a> |
+      <a href="../index.html">Home</a> |
       <a href="mailto:azfar45@gmail.com">Email</a>
-    </footer>
+    </p>
   </body>
 </html>
