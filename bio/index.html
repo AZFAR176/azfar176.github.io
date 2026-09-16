@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Research Direction | Grounded Multimodal Reasoning</title>
+    <style>
+      :root {
+        --text: #111827;
+        --muted: #4b5563;
+        --link: #1d4ed8;
+        --line: #e5e7eb;
+        --panel: #f9fafb;
+      }
+      body {
+        margin: 0 auto;
+        max-width: 980px;
+        padding: 34px 20px 56px;
+        font-family: "Avenir Next", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        color: var(--text);
+        line-height: 1.65;
+        background: #fff;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+        line-height: 1.2;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      }
+      h2 {
+        margin: 28px 0 8px;
+        font-size: 1.2rem;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      }
+      h3 {
+        margin: 16px 0 6px;
+        font-size: 1.02rem;
+      }
+      p { margin: 8px 0; }
+      ul { margin: 8px 0 0; padding-left: 20px; }
+      li { margin: 7px 0; }
+      a { color: var(--link); }
+      .muted { color: var(--muted); }
+      .top-links {
+        margin: 6px 0 14px;
+        color: var(--muted);
+      }
+      .top-links a {
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .hero {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--panel);
+        padding: 12px 14px;
+        margin-top: 14px;
+      }
+      .hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .hero-links a {
+        display: inline-block;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        text-decoration: none;
+        padding: 5px 10px;
+        background: #fff;
+      }
+      .flow {
+        border-left: 3px solid var(--line);
+        padding-left: 14px;
+        margin-top: 10px;
+      }
+      .flow-item {
+        margin: 10px 0 14px;
+      }
+      .flow-item strong {
+        display: block;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px;
+      }
+      footer {
+        margin-top: 28px;
+        border-top: 1px solid var(--line);
+        padding-top: 10px;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+      @media (min-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p class="top-links"><a href="../index.html">Home</a> | <a href="https://github.com/AZFAR176">GitHub</a></p>
+    <h1>Research Direction: Grounded Multimodal Reasoning and Evidence-Seeking Agents</h1>
+    <p>
+      This page describes a focused research thread: moving from visual grounding and controlled
+      verification to RLVR-driven post-training and future evidence-seeking multimodal agents.
+    </p>
+
+    <div class="hero" id="slides">
+      <strong>Quick access</strong>
+      <p class="muted">
+        Use this section first for application reviews and discussions.
+      </p>
+      <div class="hero-links">
+        <a href="https://drive.google.com/file/d/1PhVH8EvVGTHi2NHqk41rSpE3ggIUJ93-/view?usp=drive_link">Core Paper</a>
+        <a href="https://github.com/AZFAR176">Project Workspace</a>
+        <a href="#problem-flow">Research Flow</a>
+        <a href="#future-direction">Future Direction</a>
+      </div>
+    </div>
+
+    <h2>Why This Direction</h2>
+    <p>
+      Standard multimodal evaluation often measures final answers without explicitly validating how
+      evidence was acquired, grounded, and used. Our work targets this gap through verifiable
+      multimodal reasoning pipelines where model behavior can be tested, stressed, and improved with
+      feedback signals that are measurable.
+    </p>
+
+    <h2>Selected Research Thread</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Multimodal Oral Cancer Screening</h3>
+        <p>
+          <em>Tanuh.ai, MoE AI Centre of Excellence, IISc</em>
+        </p>
+        <p>
+          Developed smartphone-based models across diverse acquisition settings and populations, with
+          a focus on reliable grounding, robustness to capture variation, and intervention-aware
+          verification signals.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Grounding and Alignment Link</h3>
+        <p>
+          Connected representation-level diagnostics, controlled interventions, and post-training
+          objectives so multimodal systems can improve beyond pure scaling.
+        </p>
+      </div>
+    </div>
+
+    <h2 id="problem-flow">Grounded Multimodal Reasoning Flow</h2>
+    <div class="flow">
+      <div class="flow-item">
+        <strong>1. Problem</strong>
+        Reliable reasoning from smartphone clinical images under practical, noisy real-world conditions.
+      </div>
+      <div class="flow-item">
+        <strong>2. Grounding</strong>
+        Align clinical language with relevant visual regions so decisions depend on evidence, not priors.
+      </div>
+      <div class="flow-item">
+        <strong>3. Robustness</strong>
+        Stress-test behavior under acquisition variance, viewpoint shifts, and nuisance factors.
+      </div>
+      <div class="flow-item">
+        <strong>4. Evidence Verification</strong>
+        Use controlled and counterfactual interventions to test whether predicted reasoning is causally supported.
+      </div>
+      <div class="flow-item">
+        <strong>5. Post-Training</strong>
+        Convert grounding and counterfactual feedback into verifiable reward signals for RLVR-style optimization.
+      </div>
+      <div class="flow-item" id="future-direction">
+        <strong>6. Future Direction: Evidence-Seeking Multimodal Agents</strong>
+        When evidence is insufficient, agents should actively acquire missing views/context, re-ground,
+        and then decide with calibrated uncertainty.
+      </div>
+    </div>
+
+    <h2>What This Enables</h2>
+    <ul>
+      <li>A coherent research arc from perception and grounding to verifiable post-training.</li>
+      <li>Model improvements driven by measurable behavior rather than only final-answer metrics.</li>
+      <li>A practical path toward safer multimodal agents operating under uncertainty and shift.</li>
+    </ul>
+
+    <footer>
+      Dedicated research direction page for targeted applications and research discussions.
+    </footer>
+  </body>
+</html>
