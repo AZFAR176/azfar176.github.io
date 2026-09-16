@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>2. Agent Routing | Mohd Azfar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="button" href="../../index.html">Research</a>
+      <a class="button" href="../">Designs</a>
+      <a class="button" href="../text-to-sql/">1</a>
+      <a class="button current" href="./">2</a>
+      <a class="button" href="../profiler/">3</a>
+      <a class="button" href="../evidence-seeking/">4</a>
+    </nav>
+    <h1>2. Adaptive Agent &amp; Tool Routing</h1>
+    <p class="agent-status">Implemented</p>
+    <p class="agent-q">Which agent/tool should act?</p>
+
+    <p class="agent-subhead">Formulation</p>
+    <div class="agent-math">\[x_t=[\text{query},\ \text{task state},\ \text{history}]\]</div>
+    <div class="agent-math">\[a_t \in \mathcal{A}=\{\text{agent}_1,\ldots,\text{agent}_K,\ \text{tool}_1,\ldots,\text{tool}_M\}\]</div>
+    <div class="agent-math">\[r_t=\lambda_q Q_t-\lambda_l L_t-\lambda_r N_t^{\mathrm{retry}}\]</div>
+    <div class="agent-math">\[a_t=\arg\max_{a\in\mathcal{A}}\mathrm{UCB}(a\mid x_t)\]</div>
+
+    <p class="agent-subhead">Agent loop</p>
+    <div class="loop-diagram" aria-label="Contextual bandit routing loop">
+      <div class="loop-row">
+        <span class="loop-node">Context</span><i>→</i>
+        <span class="loop-node">Route</span><i>→</i>
+        <span class="loop-node">Execute</span><i>→</i>
+        <span class="loop-node">Quality / Latency / Retry</span>
+      </div>
+      <div class="loop-back">↑ Update ←</div>
+    </div>
+    <p>The router adapts agent/tool selection from online feedback rather than relying on fixed routing rules.</p>
+    <p class="agent-links">
+      <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">[code]</a>
+    </p>
+    <footer>
+      <a href="../text-to-sql/">← Text-to-SQL</a>
+      &nbsp;·&nbsp;
+      <a href="../profiler/">Next: Systems Profiling →</a>
+    </footer>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.renderMathInElement) {
+          renderMathInElement(document.body, {
+            delimiters: [
+              { left: "\\[", right: "\\]", display: true },
+              { left: "\\(", right: "\\)", display: false }
+            ]
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

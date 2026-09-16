@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>1. Text-to-SQL Agent | Mohd Azfar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="button" href="../../index.html">Research</a>
+      <a class="button" href="../">Designs</a>
+      <a class="button current" href="./">1</a>
+      <a class="button" href="../routing/">2</a>
+      <a class="button" href="../profiler/">3</a>
+      <a class="button" href="../evidence-seeking/">4</a>
+    </nav>
+    <h1>1. Execution-Grounded Text-to-SQL Agent</h1>
+    <p class="agent-status">Implemented</p>
+    <p class="agent-q">How do I verify an agent's action?</p>
+
+    <p class="agent-subhead">Inference verifier circuit</p>
+    <div class="agent-math">\[C_{\mathrm{schema}}=\operatorname{Retrieve}(q,h,\mathcal{S},\mathcal{J})\]</div>
+    <div class="agent-math">\[
+d_{\mathrm{critic}}
+=\operatorname{SemanticCritic}(q,h_q,y,\tau_{\mathrm{exec}})
+\in\{\textsc{Pass},\textsc{Retry},\textsc{Abstain}\}
+\]</div>
+    <div class="agent-math">\[
+z_{\mathrm{retry}}
+=\mathbb{I}\bigl[\neg V_{\mathrm{static}}(y)\lor\neg V_{\mathrm{exec}}(y)\lor(d_{\mathrm{critic}}=\textsc{Retry})\bigr]
+\]</div>
+    <p>
+      \(V_{\mathrm{static}}\): parse, schema/alias/join, safety, and format checks.
+      \(V_{\mathrm{exec}}\): sandboxed read-only execution.
+      The critic is schema-free and sees only \((q,h_q,y,\tau_{\mathrm{exec}})\); it does not
+      re-check tables, columns, or joins. Retry diagnostics come from the failing stage
+      (static / execution / semantic). The loop is bounded by \(K\); otherwise the agent
+      clarifies or abstains.
+    </p>
+    <div class="loop-diagram" aria-label="Text-to-SQL verifier circuit">
+      <div class="loop-stack">
+        <div class="loop-row">
+          <span class="loop-node">Retrieve</span><i>→</i>
+          <span class="loop-node">Generate</span><i>→</i>
+          <span class="loop-node">\(V_{\mathrm{static}}\)</span><i>→</i>
+          <span class="loop-node">Execute</span><i>→</i>
+          <span class="loop-node">Critic</span>
+        </div>
+        <div class="branch-split">
+          Pass → return · Retry → correct and re-enter · Abstain → clarify
+        </div>
+      </div>
+    </div>
+
+    <p class="agent-subhead">Training reward (not the critic)</p>
+    <div class="agent-math">\[
+R_{\mathrm{raw}}(y)=
+\begin{cases}
+g_{\mathrm{exec}}, & R_{\mathrm{exec}}(y)=1\\[4pt]
+R_{\mathrm{ast}}(y)+R_{\mathrm{ngram}}(y), & \text{otherwise}
+\end{cases}
+\]</div>
+    <p>
+      GRPO uses only the gated execution/AST/\(n\)-gram reward (\(g_{\mathrm{exec}}=3\)).
+      The semantic critic is an inference controller, not a training reward.
+    </p>
+    <p class="agent-links">
+      <a href="https://drive.google.com/file/d/1VLNaSUlqKvdjoW_CC5l3RoCbU4gyEYBM/view?usp=sharing">[paper]</a>
+      <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">[code]</a>
+    </p>
+    <footer>
+      <a href="../routing/">Next: Adaptive Agent &amp; Tool Routing →</a>
+    </footer>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.renderMathInElement) {
+          renderMathInElement(document.body, {
+            delimiters: [
+              { left: "\\[", right: "\\]", display: true },
+              { left: "\\(", right: "\\)", display: false }
+            ]
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

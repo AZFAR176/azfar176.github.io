@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Mohd Azfar | Research</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
     <style>
       :root {
         --text: #111827;
@@ -207,45 +206,28 @@
         grid-template-columns: 1fr;
         gap: 10px;
       }
-      .agent-card {
+      a.agent-card {
+        display: block;
         border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 0;
-        background: #fff;
-      }
-      .agent-card summary {
-        cursor: pointer;
-        list-style: none;
         padding: 12px 13px;
+        background: #fff;
+        text-decoration: none;
+        color: inherit;
       }
-      .agent-card summary::-webkit-details-marker {
-        display: none;
+      a.agent-card:hover {
+        background: #fafafa;
+        border-color: #d1d5db;
       }
-      .agent-card summary::after {
+      a.agent-card::after {
         display: block;
         margin-top: 8px;
         color: var(--link);
         font-size: 0.86rem;
-        content: "Show formulation →";
-      }
-      .agent-card[open] summary::after {
-        content: "Hide formulation";
-      }
-      .agent-card summary:hover {
-        background: #fafafa;
-      }
-      .agent-body {
-        padding: 0 13px 12px;
-        border-top: 1px solid #f3f4f6;
+        content: "Open formulation →";
       }
       .agent-card h3 {
         margin: 0 0 4px;
-      }
-      .agent-card summary .agent-status {
-        margin-bottom: 6px;
-      }
-      .agent-card summary .agent-q {
-        margin-bottom: 0;
       }
       .agent-status {
         display: inline-block;
@@ -261,89 +243,10 @@
         text-transform: uppercase;
       }
       .agent-q {
-        margin: 0 0 8px;
+        margin: 0;
         color: var(--muted);
         font-size: 0.9rem;
         font-style: italic;
-      }
-      .agent-card p {
-        margin: 6px 0;
-        font-size: 0.96rem;
-      }
-      .agent-flow,
-      .loop-row {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 6px 4px;
-        margin: 10px 0;
-        font-size: 0.82rem;
-      }
-      .agent-flow span,
-      .loop-node {
-        display: inline-block;
-        padding: 3px 7px;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        background: #fff;
-        white-space: nowrap;
-      }
-      .agent-flow i,
-      .loop-diagram i {
-        color: var(--muted);
-        font-style: normal;
-      }
-      .agent-math {
-        margin: 8px 0;
-        padding: 8px 10px;
-        overflow-x: auto;
-        background: #f9fafb;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-      }
-      .loop-diagram {
-        margin: 10px 0 8px;
-        padding: 10px 8px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #fafafa;
-        font-size: 0.82rem;
-      }
-      .loop-back,
-      .loop-caption {
-        margin-top: 6px;
-        text-align: center;
-        color: var(--muted);
-        font-size: 0.8rem;
-      }
-      .loop-stack {
-        display: grid;
-        justify-items: center;
-        gap: 5px;
-        text-align: center;
-      }
-      .branch-split {
-        display: grid;
-        gap: 4px;
-        width: 100%;
-        margin-top: 4px;
-        color: var(--muted);
-        font-size: 0.8rem;
-      }
-      .agent-subhead {
-        margin: 10px 0 4px;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-      .agent-links {
-        margin-top: 8px;
-      }
-      .agent-links a {
-        margin-right: 8px;
       }
       @media (min-width: 860px) {
         .agent-grid {
@@ -543,197 +446,31 @@
         </p>
         <p class="agent-progress">
           <strong>Progression:</strong> Verification → Routing → Diagnosis → Active Evidence Acquisition
+          &nbsp;·&nbsp;
+          <a href="designs/">Index</a>
         </p>
 
         <div class="agent-grid">
-          <details class="agent-card">
-            <summary>
-              <h3>1. Execution-Grounded Text-to-SQL Agent</h3>
-              <p class="agent-status">Implemented</p>
-              <p class="agent-q">How do I verify an agent's action?</p>
-            </summary>
-            <div class="agent-body">
-            <p class="agent-subhead">Inference verifier circuit</p>
-            <div class="agent-math">\[C_{\mathrm{schema}}=\operatorname{Retrieve}(q,h,\mathcal{S},\mathcal{J})\]</div>
-            <div class="agent-math">\[
-d_{\mathrm{critic}}
-=\operatorname{SemanticCritic}(q,h_q,y,\tau_{\mathrm{exec}})
-\in\{\textsc{Pass},\textsc{Retry},\textsc{Abstain}\}
-\]</div>
-            <div class="agent-math">\[
-z_{\mathrm{retry}}
-=\mathbb{I}\bigl[\neg V_{\mathrm{static}}(y)\lor\neg V_{\mathrm{exec}}(y)\lor(d_{\mathrm{critic}}=\textsc{Retry})\bigr]
-\]</div>
-            <p>
-              \(V_{\mathrm{static}}\): parse, schema/alias/join, safety, and format checks.
-              \(V_{\mathrm{exec}}\): sandboxed read-only execution.
-              The critic is schema-free and sees only \((q,h_q,y,\tau_{\mathrm{exec}})\); it does not
-              re-check tables, columns, or joins. Retry diagnostics come from the failing stage
-              (static / execution / semantic). The loop is bounded by \(K\); otherwise the agent
-              clarifies or abstains.
-            </p>
-            <div class="loop-diagram" aria-label="Text-to-SQL verifier circuit">
-              <div class="loop-stack">
-                <div class="loop-row">
-                  <span class="loop-node">Retrieve</span><i>→</i>
-                  <span class="loop-node">Generate</span><i>→</i>
-                  <span class="loop-node">\(V_{\mathrm{static}}\)</span><i>→</i>
-                  <span class="loop-node">Execute</span><i>→</i>
-                  <span class="loop-node">Critic</span>
-                </div>
-                <div class="branch-split">
-                  <div>Pass → return &nbsp;·&nbsp; Retry → correct and re-enter &nbsp;·&nbsp; Abstain → clarify</div>
-                </div>
-              </div>
-            </div>
-            <p class="agent-subhead">Training reward (not the critic)</p>
-            <div class="agent-math">\[
-R_{\mathrm{raw}}(y)=
-\begin{cases}
-g_{\mathrm{exec}}, & R_{\mathrm{exec}}(y)=1\\[4pt]
-R_{\mathrm{ast}}(y)+R_{\mathrm{ngram}}(y), & \text{otherwise}
-\end{cases}
-\]</div>
-            <p>
-              GRPO uses only the gated execution/AST/\(n\)-gram reward (\(g_{\mathrm{exec}}=3\)).
-              The semantic critic is an inference controller, not a training reward.
-            </p>
-            <p class="agent-links">
-              <a href="https://drive.google.com/file/d/1VLNaSUlqKvdjoW_CC5l3RoCbU4gyEYBM/view?usp=sharing">[paper]</a>
-              <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">[code]</a>
-            </p>
-            </div>
-          </details>
-
-          <details class="agent-card">
-            <summary>
-              <h3>2. Adaptive Agent &amp; Tool Routing</h3>
-              <p class="agent-status">Implemented</p>
-              <p class="agent-q">Which agent/tool should act?</p>
-            </summary>
-            <div class="agent-body">
-            <p class="agent-subhead">Formulation</p>
-            <div class="agent-math">\[x_t=[\text{query},\ \text{task state},\ \text{history}]\]</div>
-            <div class="agent-math">\[a_t \in \mathcal{A}=\{\text{agent}_1,\ldots,\text{agent}_K,\ \text{tool}_1,\ldots,\text{tool}_M\}\]</div>
-            <div class="agent-math">\[r_t=\lambda_q Q_t-\lambda_l L_t-\lambda_r N_t^{\mathrm{retry}}\]</div>
-            <div class="agent-math">\[a_t=\arg\max_{a\in\mathcal{A}}\mathrm{UCB}(a\mid x_t)\]</div>
-            <p class="agent-subhead">Agent loop</p>
-            <div class="loop-diagram" aria-label="Contextual bandit routing loop">
-              <div class="loop-row">
-                <span class="loop-node">Context</span><i>→</i>
-                <span class="loop-node">Route</span><i>→</i>
-                <span class="loop-node">Execute</span><i>→</i>
-                <span class="loop-node">Quality / Latency / Retry</span>
-              </div>
-              <div class="loop-back">↑ Update ←</div>
-            </div>
-            <p>The router adapts agent/tool selection from online feedback rather than relying on fixed routing rules.</p>
-            <p class="agent-links">
-              <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">[code]</a>
-            </p>
-            </div>
-          </details>
-
-          <details class="agent-card">
-            <summary>
-              <h3>3. Agentic Systems Profiling</h3>
-              <p class="agent-status">Implementation + Research Direction</p>
-              <p class="agent-q">How can an agent diagnose system bottlenecks?</p>
-            </summary>
-            <div class="agent-body">
-            <p class="agent-subhead">Implemented diagnostic state</p>
-            <div class="agent-math">\[
-s_t=
-(u_{\mathrm{GPU}},
-\mathrm{MFU},
-u_{\mathrm{HBM}},
-b_{\mathrm{mem}},
-t_{\mathrm{NCCL}},
-u_{\mathrm{idle}},
-\ell)
-\]</div>
-            <div class="agent-math">\[
-z_t \in
-\{\text{memory},\ \text{communication},\ \text{underfed},\ \text{cpu},\ \text{imbalance}\}
-\]</div>
-            <p class="agent-subhead">Implemented pipeline</p>
-            <div class="loop-diagram">
-              <div class="loop-row">
-                <span class="loop-node">Telemetry</span><i>→</i>
-                <span class="loop-node">Analyze</span><i>→</i>
-                <span class="loop-node">Bottleneck Class</span><i>→</i>
-                <span class="loop-node">Diagnosis</span><i>→</i>
-                <span class="loop-node">Recommendation</span>
-              </div>
-            </div>
-            <p>
-              The current implementation maps GPU and runtime telemetry onto bottleneck classes and
-              recommendations. No RL objective is claimed here.
-            </p>
-            <p class="agent-subhead">Proposed agentic extension</p>
-            <div class="agent-math">\[
-a_t \in
-\{\text{inspect kernel},\ \text{inspect memory},\ \text{profile NCCL},\ \text{inspect batching},\ \text{re-profile}\}
-\]</div>
-            <div class="loop-diagram" aria-label="Proposed profiler agent loop">
-              <div class="loop-row">
-                <span class="loop-node">Hypothesis</span><i>→</i>
-                <span class="loop-node">Select Diagnostic Action</span><i>→</i>
-                <span class="loop-node">Observe</span><i>→</i>
-                <span class="loop-node">Update Diagnosis</span>
-              </div>
-              <div class="loop-back">↑ refine ←</div>
-            </div>
-            <p class="agent-links">
-              <a href="https://github.com/AZFAR176/LLm-Gpu-Profiler">[code]</a>
-            </p>
-            </div>
-          </details>
-
-          <details class="agent-card">
-            <summary>
-              <h3>4. Evidence-Seeking Multimodal Agent</h3>
-              <p class="agent-status">Research Direction</p>
-              <p class="agent-q">What should the agent do when evidence is insufficient?</p>
-            </summary>
-            <div class="agent-body">
-            <p class="agent-subhead">Formulation</p>
-            <div class="agent-math">\[s_t=(I_t,q,h_t,G_t,c_t)\]</div>
-            <p>
-              \(I_t\): current observation, \(q\): clinical context/question, \(h_t\): interaction
-              history, \(G_t\): grounding information, \(c_t\): evidence confidence.
-            </p>
-            <div class="agent-math">\[
-a_t \in
-\{\text{zoom},\ \text{new-view},\ \text{ask},\ \text{retrieve},\ \text{predict},\ \text{abstain}\}
-\]</div>
-            <div class="agent-math">\[
-R=R_{\mathrm{task}}+\lambda_g R_{\mathrm{ground}}+\lambda_a R_{\mathrm{acq}}-\lambda_c C(a)
-\]</div>
-            <p class="agent-subhead">Agent loop</p>
-            <div class="loop-diagram" aria-label="Evidence-seeking multimodal agent loop">
-              <div class="loop-stack">
-                <span class="loop-node">Image + Context</span>
-                <i>↓</i>
-                <span class="loop-node">Ground + Reason</span>
-                <i>↓</i>
-                <span class="loop-node">Evidence sufficient?</span>
-                <div class="branch-split">
-                  <div>Yes → Predict / Abstain</div>
-                  <div>No → Acquire missing evidence → New observation → Re-ground</div>
-                </div>
-              </div>
-            </div>
-            <p>
-              \(R_{\mathrm{task}}\) rewards decision correctness, \(R_{\mathrm{ground}}\) rewards
-              dependence on relevant visual evidence, \(R_{\mathrm{acq}}\) rewards informative
-              acquisition, and \(C(a)\) discourages unnecessary actions.
-            </p>
-            <p class="agent-links">
-              <a href="https://drive.google.com/file/d/1KUR3_N1M3H1WIETI76W7KyK602W04f_4/view?usp=sharing">[slides]</a>
-            </p>
-            </div>
-          </details>
+          <a class="agent-card" href="designs/text-to-sql/">
+            <h3>1. Execution-Grounded Text-to-SQL Agent</h3>
+            <p class="agent-status">Implemented</p>
+            <p class="agent-q">How do I verify an agent's action?</p>
+          </a>
+          <a class="agent-card" href="designs/routing/">
+            <h3>2. Adaptive Agent &amp; Tool Routing</h3>
+            <p class="agent-status">Implemented</p>
+            <p class="agent-q">Which agent/tool should act?</p>
+          </a>
+          <a class="agent-card" href="designs/profiler/">
+            <h3>3. Agentic Systems Profiling</h3>
+            <p class="agent-status">Implementation + Research Direction</p>
+            <p class="agent-q">How can an agent diagnose system bottlenecks?</p>
+          </a>
+          <a class="agent-card" href="designs/evidence-seeking/">
+            <h3>4. Evidence-Seeking Multimodal Agent</h3>
+            <p class="agent-status">Research Direction</p>
+            <p class="agent-q">What should the agent do when evidence is insufficient?</p>
+          </a>
         </div>
 
         <h2>Collaborations</h2>
@@ -787,19 +524,5 @@ R=R_{\mathrm{task}}+\lambda_g R_{\mathrm{ground}}+\lambda_a R_{\mathrm{acq}}-\la
     <footer>
       Last updated: September 2026.
     </footer>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (window.renderMathInElement) {
-          renderMathInElement(document.body, {
-            delimiters: [
-              { left: "\\[", right: "\\]", display: true },
-              { left: "\\(", right: "\\)", display: false }
-            ]
-          });
-        }
-      });
-    </script>
   </body>
 </html>
