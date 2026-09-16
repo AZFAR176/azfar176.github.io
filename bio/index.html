@@ -194,64 +194,21 @@
         padding-top: 12px;
       }
       .agent-progress {
-        margin: 12px 0 16px;
+        margin: 12px 0 8px;
         padding: 9px 11px;
         background: #f9fafb;
         border: 1px solid var(--line);
         border-radius: 8px;
         font-size: 0.94rem;
       }
-      .agent-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
+      .agent-visual {
+        margin: 8px 0 0;
+        padding-left: 18px;
       }
-      a.agent-card {
-        display: block;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 12px 13px;
-        background: #fff;
-        text-decoration: none;
-        color: inherit;
-      }
-      a.agent-card:hover {
-        background: #fafafa;
-        border-color: #d1d5db;
-      }
-      a.agent-card::after {
-        display: block;
-        margin-top: 8px;
-        color: var(--link);
-        font-size: 0.86rem;
-        content: "Open formulation →";
-      }
-      .agent-card h3 {
-        margin: 0 0 4px;
-      }
-      .agent-status {
-        display: inline-block;
-        margin: 0 0 8px;
-        padding: 1px 7px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: #f9fafb;
-        color: var(--muted);
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-      }
-      .agent-q {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.9rem;
-        font-style: italic;
+      .agent-visual li {
+        margin: 6px 0;
       }
       @media (min-width: 860px) {
-        .agent-grid {
-          grid-template-columns: 1fr 1fr;
-        }
         .layout {
           grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
           align-items: start;
@@ -446,32 +403,13 @@
         </p>
         <p class="agent-progress">
           <strong>Progression:</strong> Verification → Routing → Diagnosis → Active Evidence Acquisition
-          &nbsp;·&nbsp;
-          <a href="designs/">Index</a>
         </p>
-
-        <div class="agent-grid">
-          <a class="agent-card" href="designs/text-to-sql/">
-            <h3>1. Execution-Grounded Text-to-SQL Agent</h3>
-            <p class="agent-status">Implemented</p>
-            <p class="agent-q">How do I verify an agent's action?</p>
-          </a>
-          <a class="agent-card" href="designs/routing/">
-            <h3>2. Adaptive Agent &amp; Tool Routing</h3>
-            <p class="agent-status">Implemented</p>
-            <p class="agent-q">Which agent/tool should act?</p>
-          </a>
-          <a class="agent-card" href="designs/profiler/">
-            <h3>3. Agentic Systems Profiling</h3>
-            <p class="agent-status">Implementation + Research Direction</p>
-            <p class="agent-q">How can an agent diagnose system bottlenecks?</p>
-          </a>
-          <a class="agent-card" href="designs/evidence-seeking/">
-            <h3>4. Evidence-Seeking Multimodal Agent</h3>
-            <p class="agent-status">Research Direction</p>
-            <p class="agent-q">What should the agent do when evidence is insufficient?</p>
-          </a>
-        </div>
+        <ul class="agent-visual">
+          <li><strong>Execution-Grounded Text-to-SQL</strong> — How do I verify an agent's action?</li>
+          <li><strong>Adaptive Agent &amp; Tool Routing</strong> — Which agent/tool should act?</li>
+          <li><strong>Agentic Systems Profiling</strong> — How can an agent diagnose system bottlenecks?</li>
+          <li><strong>Evidence-Seeking Multimodal Agent</strong> — What should the agent do when evidence is insufficient?</li>
+        </ul>
 
         <h2>Collaborations</h2>
         <p>
