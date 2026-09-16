@@ -553,9 +553,40 @@
               <p class="agent-q">How do I verify an agent's action?</p>
             </summary>
             <div class="agent-body">
-            <p class="agent-subhead">Formulation</p>
-            <div class="agent-math">\[s_t=(q,\mathcal{S},h_t,e_t)\]</div>
-            <div class="agent-math">\[a_t \in \{\text{generate},\ \text{execute},\ \text{retry},\ \text{accept},\ \text{abstain}\}\]</div>
+            <p class="agent-subhead">Inference verifier circuit</p>
+            <div class="agent-math">\[C_{\mathrm{schema}}=\operatorname{Retrieve}(q,h,\mathcal{S},\mathcal{J})\]</div>
+            <div class="agent-math">\[
+d_{\mathrm{critic}}
+=\operatorname{SemanticCritic}(q,h_q,y,\tau_{\mathrm{exec}})
+\in\{\textsc{Pass},\textsc{Retry},\textsc{Abstain}\}
+\]</div>
+            <div class="agent-math">\[
+z_{\mathrm{retry}}
+=\mathbb{I}\bigl[\neg V_{\mathrm{static}}(y)\lor\neg V_{\mathrm{exec}}(y)\lor(d_{\mathrm{critic}}=\textsc{Retry})\bigr]
+\]</div>
+            <p>
+              \(V_{\mathrm{static}}\): parse, schema/alias/join, safety, and format checks.
+              \(V_{\mathrm{exec}}\): sandboxed read-only execution.
+              The critic is schema-free and sees only \((q,h_q,y,\tau_{\mathrm{exec}})\); it does not
+              re-check tables, columns, or joins. Retry diagnostics come from the failing stage
+              (static / execution / semantic). The loop is bounded by \(K\); otherwise the agent
+              clarifies or abstains.
+            </p>
+            <div class="loop-diagram" aria-label="Text-to-SQL verifier circuit">
+              <div class="loop-stack">
+                <div class="loop-row">
+                  <span class="loop-node">Retrieve</span><i>→</i>
+                  <span class="loop-node">Generate</span><i>→</i>
+                  <span class="loop-node">\(V_{\mathrm{static}}\)</span><i>→</i>
+                  <span class="loop-node">Execute</span><i>→</i>
+                  <span class="loop-node">Critic</span>
+                </div>
+                <div class="branch-split">
+                  <div>Pass → return &nbsp;·&nbsp; Retry → correct and re-enter &nbsp;·&nbsp; Abstain → clarify</div>
+                </div>
+              </div>
+            </div>
+            <p class="agent-subhead">Training reward (not the critic)</p>
             <div class="agent-math">\[
 R_{\mathrm{raw}}(y)=
 \begin{cases}
@@ -564,22 +595,9 @@ R_{\mathrm{ast}}(y)+R_{\mathrm{ngram}}(y), & \text{otherwise}
 \end{cases}
 \]</div>
             <p>
-              \(q\): query, \(\mathcal{S}\): schema, \(h_t\): trajectory history, \(e_t\): execution
-              feedback. Execution is a pass grade (\(g_{\mathrm{exec}}=3\)); AST and SQL \(n\)-gram
-              similarity apply only when execution fails, so structural fallback cannot outrank a
-              correct program.
+              GRPO uses only the gated execution/AST/\(n\)-gram reward (\(g_{\mathrm{exec}}=3\)).
+              The semantic critic is an inference controller, not a training reward.
             </p>
-            <p class="agent-subhead">Agent loop</p>
-            <div class="loop-diagram" aria-label="Text-to-SQL verification loop">
-              <div class="loop-row">
-                <span class="loop-node">Query + Schema</span><i>→</i>
-                <span class="loop-node">Generate</span><i>→</i>
-                <span class="loop-node">Execute</span><i>→</i>
-                <span class="loop-node">Verify</span>
-              </div>
-              <div class="loop-back">↑ Retry ←</div>
-            </div>
-            <p>Inference-time verification and training-time GRPO/RLVR rewards are related, but not identical.</p>
             <p class="agent-links">
               <a href="https://drive.google.com/file/d/1VLNaSUlqKvdjoW_CC5l3RoCbU4gyEYBM/view?usp=sharing">[paper]</a>
               <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">[code]</a>
