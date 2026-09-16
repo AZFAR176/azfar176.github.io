@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Adaptive Agent &amp; Tool Routing | Mohd Azfar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+    <style>
+      :root {
+        --text: #111827;
+        --muted: #4b5563;
+        --link: #1d4ed8;
+        --line: #e5e7eb;
+        --box: #fff;
+        --soft: #f9fafb;
+      }
+      body {
+        margin: 0 auto;
+        max-width: 780px;
+        padding: 36px 20px 56px;
+        font-family: "Avenir Next", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        background: #fff;
+        color: var(--text);
+        line-height: 1.65;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.75rem;
+        line-height: 1.25;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      }
+      h2 {
+        margin: 22px 0 6px;
+        font-size: 1.05rem;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      }
+      p { margin: 10px 0; }
+      a { color: var(--link); }
+      .muted { color: var(--muted); }
+      .button {
+        display: inline-block;
+        padding: 6px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        background: #fafafa;
+        font-size: 0.94rem;
+      }
+      .nav { margin-bottom: 22px; }
+      .diagram {
+        margin: 20px 0 8px;
+        padding: 18px 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--soft);
+      }
+      .flow {
+        display: grid;
+        justify-items: center;
+        gap: 0;
+      }
+      .node {
+        width: min(280px, 100%);
+        padding: 9px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--box);
+        text-align: center;
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+      .node small {
+        display: block;
+        margin-top: 2px;
+        font-weight: 500;
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+      .v {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.2;
+        margin: 2px 0;
+      }
+      .update {
+        margin-top: 10px;
+        padding: 8px 10px;
+        border: 1px dashed #9ca3af;
+        border-radius: 8px;
+        background: #fff;
+        text-align: center;
+        font-size: 0.86rem;
+      }
+      .math {
+        margin: 8px 0 12px;
+        padding: 10px 12px;
+        overflow-x: auto;
+        background: var(--soft);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      footer {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="nav"><a class="button" href="../index.html">← Research</a></p>
+    <h1>Adaptive Agent &amp; Tool Routing</h1>
+    <p class="muted">Which agent or tool should act for the current request?</p>
+    <p>
+      A contextual bandit learns routing decisions from task context and observed
+      execution feedback rather than relying on a fixed router.
+    </p>
+
+    <div class="diagram" aria-label="Contextual bandit routing loop">
+      <div class="flow">
+        <div class="node">Task Context<small>query · state · history</small></div>
+        <div class="v">↓</div>
+        <div class="node">Context Encoder<small>\(x_t\)</small></div>
+        <div class="v">↓</div>
+        <div class="node">Bandit Router<small>LinUCB / Thompson Sampling</small></div>
+        <div class="v">↓</div>
+        <div class="node">Select Agent / Tool<small>\(a_t \in \mathcal{A}\)</small></div>
+        <div class="v">↓</div>
+        <div class="node">Execute</div>
+        <div class="v">↓</div>
+        <div class="node">Observe Feedback<small>quality · latency · retries</small></div>
+        <div class="v">↓</div>
+        <div class="node">Reward \(r_t\)</div>
+      </div>
+      <p class="update">
+        \(r_t\) → Update Router → next routing decision
+      </p>
+    </div>
+
+    <h2>Formulation</h2>
+    <div class="math">\[
+x_t=\phi(q_t,s_t,h_t),\qquad a_t\in\mathcal{A}
+\]</div>
+    <div class="math">\[
+r_t=\lambda_q Q_t-\lambda_l L_t-\lambda_r N_t^{\mathrm{retry}}
+\]</div>
+    <p>
+      \(x_t\) is the current routing context, \(a_t\) the selected agent/tool, and
+      \(r_t\) combines task quality, execution latency, and retry cost.
+    </p>
+
+    <h2>LinUCB selection</h2>
+    <div class="math">\[
+a_t=\arg\max_{a\in\mathcal{A}}
+\left(
+\hat{\theta}_a^\top x_t
++
+\alpha\sqrt{x_t^\top A_a^{-1}x_t}
+\right)
+\]</div>
+
+    <p>
+      <strong>Key idea:</strong> routing is an online learning problem. Successful,
+      efficient executions reinforce routing decisions; poor-quality, slow, or
+      retry-heavy trajectories change future selections.
+    </p>
+
+    <p>
+      <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">[code]</a>
+    </p>
+    <footer>
+      <a href="../index.html">← Back to research</a>
+    </footer>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.renderMathInElement) {
+          renderMathInElement(document.body, {
+            delimiters: [
+              { left: "\\[", right: "\\]", display: true },
+              { left: "\\(", right: "\\)", display: false }
+            ]
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
