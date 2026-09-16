@@ -141,14 +141,12 @@
     <p class="nav"><a class="button" href="../index.html">← Research</a></p>
     <h1>Evidence-Seeking Multimodal Agent</h1>
     <p class="muted">
-      What should a multimodal agent do when the available visual evidence is
-      insufficient to make a reliable decision?
+      What should the model do when the image is not enough to decide?
     </p>
     <p>
-      A standard VLM must answer from the evidence it receives. An
-      evidence-seeking agent can instead estimate whether its current decision
-      is sufficiently grounded, identify what evidence is missing, and interact
-      with the environment before committing to an answer.
+      A usual VLM has to answer from whatever it is shown. This agent first
+      checks whether that evidence actually supports the answer. If it does
+      not, it can get another view or more context before deciding.
     </p>
 
     <div class="diagram" aria-label="Evidence-seeking multimodal agent">
@@ -157,7 +155,7 @@
         <div class="v">↓</div>
         <div class="node">Ground &amp; Reason<small>evidence → hypothesis</small></div>
         <div class="v">↓</div>
-        <div class="node">Evidence Verifier<small>sufficient? grounded? counterfactually supported?</small></div>
+        <div class="node">Evidence Verifier<small>enough evidence? on the right region? does the answer change if that region changes?</small></div>
       </div>
       <div class="branch">
         <div class="out"><strong>Sufficient</strong><span>Predict / Abstain</span></div>
@@ -170,7 +168,7 @@
       </div>
     </div>
 
-    <h2>Sequential decision problem</h2>
+    <h2>How the agent decides</h2>
     <div class="math">\[
 s_t = (o_{1:t},\, g_t,\, h_t,\, u_t)
 \]</div>
@@ -185,15 +183,15 @@ o_{t+1} = \mathcal{E}(s_t,a_t),
 s_{t+1} = \operatorname{Update}(s_t,o_{t+1})
 \]</div>
     <p>
-      \(g_t\) is the currently grounded visual evidence, \(h_t\) the current
-      hypothesis, and \(u_t\) evidence insufficiency. The policy chooses whether
-      more evidence is worth acquiring, not only the final answer.
+      \(g_t\) is the visual evidence it is using, \(h_t\) its current guess, and
+      \(u_t\) how incomplete that evidence looks. The choice is whether to get
+      more information, not only what to answer.
     </p>
 
-    <h2>Reward</h2>
+    <h2>What gets rewarded</h2>
     <p>
-      Acquisition is not rewarded by itself; otherwise the model can keep
-      requesting more evidence.
+      Asking for more views is not rewarded on its own. Otherwise the model
+      learns to keep requesting extra images.
     </p>
     <div class="math">\[
 R =
@@ -205,25 +203,18 @@ R_{\mathrm{task}}
 -\lambda_r N_{\mathrm{redundant}}
 \]</div>
     <p>
-      \(R_{\mathrm{task}}\): correctness of the eventual decision.
-      \(R_{\mathrm{ground}}\): dependence on task-relevant visual evidence.
-      \(R_{\mathrm{verify}}\): counterfactual / controlled verification.
-      \(R_{\mathrm{info}}\): whether the new observation improves the evidence state.
-      \(C(a)\): cost of another observation.
-      \(N_{\mathrm{redundant}}\): unnecessary or repeated acquisition.
-    </p>
-    <p>
-      Can a multimodal policy learn not only to reason over visual evidence, but
-      also when that evidence is inadequate and which action would most
-      efficiently resolve the ambiguity?
+      \(R_{\mathrm{task}}\): was the final answer correct?
+      \(R_{\mathrm{ground}}\): did it use the relevant part of the image?
+      \(R_{\mathrm{verify}}\): does the answer still hold if that evidence is changed?
+      \(R_{\mathrm{info}}\): did the new view actually help?
+      \(C(a)\): cost of another look.
+      \(N_{\mathrm{redundant}}\): repeated or useless requests.
     </p>
 
-    <h2>The trigger is the research problem</h2>
+    <h2>When to ask for more</h2>
     <p>
-      The strongest part is not acquisition itself. Active perception already
-      asks which observation would reduce uncertainty. The question here is
-      different: when should the model decide that its current visual evidence
-      does not justify its answer?
+      The hard part is the trigger: when is the current image not enough to
+      justify the answer?
     </p>
     <div class="math">\[
 I_t = f(G_t,\, V_t,\, C_t)
@@ -236,25 +227,21 @@ a_t =
 \end{cases}
 \]</div>
     <p>
-      \(G_t\) measures grounding quality, \(V_t\) stability under evidence
-      interventions, and \(C_t\) decision confidence. Evidence insufficiency is
-      defined in terms of grounding, not only token entropy.
+      \(G_t\): is it looking at the right region?
+      \(V_t\): does the answer move if that region changes?
+      \(C_t\): how sure is the model?
+      If \(I_t\) is high, get more evidence; otherwise decide.
     </p>
 
-    <h2>Research progression</h2>
+    <h2>How this builds on earlier work</h2>
     <p class="progress">
-      Clinical-description-guided grounding
-      → Does the prediction depend on relevant evidence?
-      → Controlled / counterfactual verification
-      → Turn verification into a learnable reward
-      → Multimodal RLVR
-      → Evidence insufficient?
-      → Learn an acquisition policy
-      → Acquire → re-ground → verify → decide
-    </p>
-    <p>
-      This is a research direction. The agentic loop is the next step after
-      grounding and verification, not a separate “multimodal agents” project.
+      Ground on the clinical description
+      → Does the answer use the relevant region?
+      → Change that region and check if the answer changes
+      → Use that signal as a reward
+      → Train with RLVR
+      → If evidence is still weak, learn what to request next
+      → New view → ground again → check → decide
     </p>
 
     <p>
