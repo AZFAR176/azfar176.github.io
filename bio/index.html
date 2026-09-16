@@ -193,6 +193,78 @@
         border-top: 1px solid var(--line);
         padding-top: 12px;
       }
+      .agent-progress {
+        margin: 12px 0 16px;
+        padding: 9px 11px;
+        background: #f9fafb;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        font-size: 0.94rem;
+      }
+      .agent-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .agent-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px 13px 11px;
+        background: #fff;
+      }
+      .agent-card h3 {
+        margin: 0 0 4px;
+      }
+      .agent-q {
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-style: italic;
+      }
+      .agent-card p {
+        margin: 6px 0;
+        font-size: 0.96rem;
+      }
+      .agent-flow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px 4px;
+        margin: 10px 0;
+        font-size: 0.82rem;
+      }
+      .agent-flow span {
+        display: inline-block;
+        padding: 3px 7px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #f9fafb;
+        white-space: nowrap;
+      }
+      .agent-flow i {
+        color: var(--muted);
+        font-style: normal;
+      }
+      .agent-math {
+        margin: 8px 0;
+        padding: 7px 10px;
+        background: #f9fafb;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: "Iowan Old Style", Palatino, Georgia, serif;
+        font-size: 0.95rem;
+      }
+      .agent-links {
+        margin-top: 8px;
+      }
+      .agent-links a {
+        margin-right: 8px;
+      }
+      @media (min-width: 860px) {
+        .agent-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
       @media (min-width: 860px) {
         .layout {
           grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
@@ -382,23 +454,124 @@
           <a href="https://drive.google.com/file/d/1KUR3_N1M3H1WIETI76W7KyK602W04f_4/view?usp=sharing">[Research Slides]</a>
         </p>
 
-        <h3>Evidence-Seeking Multimodal Agents</h3>
+        <h2>Agent Designs</h2>
         <p>
-          When the current observation is insufficient, the model should not be forced to make a
-          prediction. I am exploring an agentic formulation in which the model can identify missing
-          evidence, select an informative action, and reason again from the resulting observation.
+          Across my work, I have explored agent architectures where model decisions are coupled
+          with verification, adaptive routing, or interaction with an environment. These are four
+          different research problems, not four instances of the same agent:
+          verification, routing, diagnosis, then active evidence acquisition.
         </p>
-        <p>
-          <strong>Agent loop:</strong>
-          Observe → Ground &amp; Reason → Verify → Acquire Evidence → Re-ground → Predict / Abstain
+        <p class="agent-progress">
+          <strong>Progression:</strong> Verification → Routing → Diagnosis → Active Evidence Acquisition
         </p>
-        <p>
-          <strong>Actions:</strong> another view · zoom · ask for context · retrieve · predict · abstain
-        </p>
-        <p>
-          <strong>Learning objective:</strong> reward correct and grounded decisions together with
-          useful evidence acquisition, while penalizing unnecessary actions.
-        </p>
+
+        <div class="agent-grid">
+          <article class="agent-card">
+            <h3>1. Execution-Grounded Text-to-SQL Agent</h3>
+            <p class="agent-q">How do I verify an agent's action?</p>
+            <p>
+              SQL generation is not reliable when correctness is judged only from the generated text.
+            </p>
+            <div class="agent-flow" aria-label="Text-to-SQL verification loop">
+              <span>Query + Schema</span><i>→</i>
+              <span>Generate SQL</span><i>→</i>
+              <span>Execute</span><i>→</i>
+              <span>Verify</span><i>→</i>
+              <span>Retry / Accept</span>
+            </div>
+            <p>
+              The environment executes candidate SQL; a verifier uses execution and structural
+              feedback to accept or revise the trajectory. The same signals train GRPO/RLVR.
+            </p>
+            <p><strong>Key idea:</strong> connect inference-time verification with training-time reward.</p>
+            <p class="agent-links">
+              <a href="https://drive.google.com/file/d/1VLNaSUlqKvdjoW_CC5l3RoCbU4gyEYBM/view?usp=sharing">[paper]</a>
+              <a href="https://github.com/AZFAR176/Text-to-SQL-RL-Pipeline">[code]</a>
+            </p>
+          </article>
+
+          <article class="agent-card">
+            <h3>2. Adaptive Agent &amp; Tool Routing</h3>
+            <p class="agent-q">Which agent/tool should act?</p>
+            <p>
+              A fixed router does not account for query difficulty, tool suitability, latency, or
+              previous outcomes.
+            </p>
+            <div class="agent-flow" aria-label="Contextual bandit routing loop">
+              <span>Context</span><i>→</i>
+              <span>Select Agent / Tool</span><i>→</i>
+              <span>Execute</span><i>→</i>
+              <span>Observe Reward</span><i>→</i>
+              <span>Update Router</span>
+            </div>
+            <p>
+              Routing is a contextual bandit: the policy learns from online feedback over quality,
+              latency, and retries, instead of static rules or a fixed LLM router.
+            </p>
+            <p class="agent-math">a<sub>t</sub> = arg max<sub>a</sub> UCB(a | x<sub>t</sub>)</p>
+            <p class="agent-links">
+              <a href="https://github.com/AZFAR176/Contextual-Bandits-For-Multi-Agent-Systems">[code]</a>
+            </p>
+          </article>
+
+          <article class="agent-card">
+            <h3>3. LLM Systems Profiler</h3>
+            <p class="agent-q">How do I diagnose the environment/system?</p>
+            <p>
+              Poor LLM performance can arise from different bottlenecks across compute, memory,
+              communication, and execution.
+            </p>
+            <div class="agent-flow" aria-label="Implemented profiler diagnostic loop">
+              <span>Telemetry</span><i>→</i>
+              <span>Detect Bottleneck</span><i>→</i>
+              <span>Diagnose Cause</span><i>→</i>
+              <span>Recommend Action</span>
+            </div>
+            <p>
+              The implemented system organizes GPU and runtime signals into bottleneck diagnoses
+              and actionable recommendations for distributed LLM training and inference.
+            </p>
+            <p>
+              <strong>Direction:</strong> extend this from passive diagnostics toward an agent that
+              iteratively tests hypotheses and selects profiling actions.
+            </p>
+            <p class="agent-links">
+              <a href="https://github.com/AZFAR176/LLm-Gpu-Profiler">[code]</a>
+            </p>
+          </article>
+
+          <article class="agent-card">
+            <h3>4. Evidence-Seeking Multimodal Agent</h3>
+            <p class="agent-q">What should the agent do when evidence is insufficient?</p>
+            <p>
+              A grounded multimodal model may still receive insufficient or ambiguous evidence.
+            </p>
+            <div class="agent-flow" aria-label="Evidence-seeking multimodal agent loop">
+              <span>Observe</span><i>→</i>
+              <span>Ground &amp; Reason</span><i>→</i>
+              <span>Verify</span><i>→</i>
+              <span>Acquire Evidence</span><i>→</i>
+              <span>Re-ground</span><i>→</i>
+              <span>Decide</span>
+            </div>
+            <p>
+              Actions: another view · zoom · ask for context · retrieve · predict · abstain.
+            </p>
+            <p class="agent-math">
+              R = R<sub>task</sub> + λ<sub>g</sub> R<sub>ground</sub> + λ<sub>a</sub> R<sub>acq</sub> − λ<sub>c</sub> C(a)
+            </p>
+            <p>
+              Reward correct grounded decisions and useful acquisition; penalize unnecessary actions.
+            </p>
+            <p>
+              <strong>Research direction:</strong> move from verifying available evidence to learning
+              when and how to acquire missing evidence.
+            </p>
+            <p class="agent-links">
+              <a href="https://drive.google.com/file/d/1KUR3_N1M3H1WIETI76W7KyK602W04f_4/view?usp=sharing">[slides]</a>
+            </p>
+          </article>
+        </div>
 
         <h2>Collaborations</h2>
         <p>
